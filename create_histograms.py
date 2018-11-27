@@ -9,7 +9,7 @@ file = 'daten_robinson.csv'
 data = pd.read_csv(file, sep=';', na_values=('Nothing'), error_bad_lines=False)
 # not working questions for graph
 forbiddenQuestions = [0]
-# fragwürdig 23, 24, 25
+# fragwuerdig 23, 24, 25
 for val in list(data):
     isValid = False
     isValid2 = False
@@ -45,7 +45,7 @@ for val in list(data):
             plt.xticks(rotation=90)
 
         plt.ylabel('Anzahl')
-        plt.xlabel("Ausprägung")
+        plt.xlabel("Auspraegung")
         # plt.show()
         plt.savefig('./graphs/histograms/' + val + '.png')
         print('Image created')

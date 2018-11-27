@@ -1,6 +1,6 @@
 import pandas as pd
 # Assign filename to variable: file
-file = 'daten_robinson.csv'
+file = '../daten_robinson.csv'
 
 
 def load_data():
