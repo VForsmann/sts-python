@@ -1,0 +1,1 @@
+# Hier werden alle PNG Dateien für Histogramme erzeugt
