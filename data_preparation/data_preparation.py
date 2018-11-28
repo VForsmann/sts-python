@@ -41,6 +41,15 @@ def boxplot():
     plt.boxplot(data['f17'])
 
 
-#set_empty_values_new('f17_Comment')
-#set_empty_values_new('f17', replace_value='-99')
 descriptive_statistics()
+
+
+# replace a field value with a given new value
+def set_field_value_to_new_value(field, replace_value, new_value):
+    data[field] = data[field].replace(replace_value, new_value)
+    print(data[field])
+
+
+set_empty_values_new('f17_Comment')
+set_empty_values_new('f17', replace_value='-99')
+set_field_value_to_new_value('f1', 0, 1)
