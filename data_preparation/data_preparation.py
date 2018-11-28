@@ -1,8 +1,9 @@
 import numpy as np
 import pandas as pd
-import csv_import as csv
 import matplotlib.pyplot as plt
-data = csv.load_data()
+import functions as fn
+
+data = fn.load_data('../daten_robinson.csv')
 
 
 # count the values and how often they appear
