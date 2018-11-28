@@ -6,7 +6,9 @@ import pandas as pd
 # Assign filename to variable: file
 file = 'daten_robinson.csv'
 
-data = pd.read_csv(file, sep=';', na_values=('Nothing'), error_bad_lines=False)
+raw_data = pd.read_csv(file, sep=';', na_values=('Nothing'), error_bad_lines=False)
+data = raw_data.drop(index=87)
+
 # not working questions for graph
 forbiddenQuestions = [0]
 # fragwuerdig 23, 24, 25
@@ -35,7 +37,7 @@ for val in list(data):
         lower = pd.DataFrame.min(data[[val]])
         print(upper)
         try:
-            pd.DataFrame.hist(data[[val]], bins=np.arange(int(upper) + 2) - 0.25, width=0.5)
+            pd.DataFrame.hist(data[[val]].astype(np.int), bins=np.arange(int(upper) + 2) - 0.25, width=0.5)
         except:
             print('doesnt work now')
             continue
