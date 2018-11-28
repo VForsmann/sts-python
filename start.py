@@ -6,11 +6,6 @@ import pandas as pd
 # Start script
 data = csv.load_data()
 
-f22_data = np.array(data[['f22']])
-median = np.median(f22_data[f22_data > 0])
-f22_data[f22_data == 0] = median
-pd.DataFrame.hist(pd.DataFrame(f22_data))
-
 # example for vitus
 logos = data[['f12_1', 'f12_2', 'f12_3', 'f12_4', 'f12_5', 'f12_6', 'f12_7', 'f12_8', 'f12_9']].replace(' ', '0')
 sum_logos = fn.sum_characteristics(np.array(logos[1:]))
