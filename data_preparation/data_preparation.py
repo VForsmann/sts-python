@@ -11,3 +11,10 @@ raw_data = fn.load_data('../daten_robinson.csv')
 # removes row with empty values
 data = raw_data.drop(index=87)
 
+# f1 - set zero values to median
+data['f1'] = fn.set_zero_to_median(raw_data, 'f1')
+
+# f2 - set zero values to median
+data['f2'] = fn.set_zero_to_median(raw_data, 'f2')
+
+
