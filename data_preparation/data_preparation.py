@@ -1,4 +1,5 @@
 import pandas as pd
+
 import functions as fn
 
 raw_data = fn.load_data('../daten_robinson.csv')
@@ -58,6 +59,7 @@ data['f5_8'] = fn.set_field_value_to_new_value(raw_data, 'f5_8', 0, 8)
 data['f5_9'] = fn.set_field_value_to_new_value(raw_data, 'f5_9', 0, 8)
 data['f5_10'] = fn.set_field_value_to_new_value(raw_data, 'f5_10', 0, 8)
 data['f5_11'] = fn.set_field_value_to_new_value(raw_data, 'f5_11', 0, 8)
+
 # f6 - set zero values to 8
 data['f6_1'] = fn.set_field_value_to_new_value(raw_data, 'f6_1', 0, 8)
 data['f6_2'] = fn.set_field_value_to_new_value(raw_data, 'f6_2', 0, 8)
