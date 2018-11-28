@@ -1,3 +1,5 @@
+import pandas as pd
+
 import functions as fn
 import numpy as np
 raw_data = fn.load_data('../daten_robinson.csv')
@@ -60,7 +62,6 @@ data['f5_9'] = fn.set_field_value_to_new_value(raw_data, 'f5_9', 0, 8)
 data['f5_10'] = fn.set_field_value_to_new_value(raw_data, 'f5_10', 0, 8)
 data['f5_11'] = fn.set_field_value_to_new_value(raw_data, 'f5_11', 0, 8)
 
-
 # Clean F15
 tmp_field = ['f15_1', 'f15_2', 'f15_3', 'f15_4', 'f15_5', 'f15_6', 'f15_7', 'f15_8', 'f15_9', 'f15_10', 'f15_11',
              'f15_12', 'f15_13', 'f15_14', 'f15_15', 'f15_16']
@@ -77,3 +78,32 @@ data[tmp_field] = fn.question_cleaning(data, tmp_field, rep_value='0', rep_with=
 # Clean F19
 tmp_field = ['f19_1', 'f19_2', 'f19_3', 'f19_4', 'f19_5', 'f19_6', 'f19_7', 'f19_8', 'f19_9', 'f19_10']
 data[tmp_field] = fn.question_cleaning(data, tmp_field, rep_value='0', rep_with=8)
+
+# f6 - set zero values to 8
+data['f6_1'] = fn.set_field_value_to_new_value(raw_data, 'f6_1', 0, 8)
+data['f6_2'] = fn.set_field_value_to_new_value(raw_data, 'f6_2', 0, 8)
+data['f6_3'] = fn.set_field_value_to_new_value(raw_data, 'f6_3', 0, 8)
+data['f6_4'] = fn.set_field_value_to_new_value(raw_data, 'f6_4', 0, 8)
+data['f6_5'] = fn.set_field_value_to_new_value(raw_data, 'f6_5', 0, 8)
+data['f6_6'] = fn.set_field_value_to_new_value(raw_data, 'f6_6', 0, 8)
+data['f6_7'] = fn.set_field_value_to_new_value(raw_data, 'f6_7', 0, 8)
+data['f6_8'] = fn.set_field_value_to_new_value(raw_data, 'f6_8', 0, 8)
+data['f6_9'] = fn.set_field_value_to_new_value(raw_data, 'f6_9', 0, 8)
+
+# f7 - we do not use this question because of too large variations
+
+# f8 - set zero value to median
+data['f8'] = fn.set_zero_to_median(raw_data, 'f8')
+
+# f9 - there is nothing to do here.
+
+# f10 - set zero values to 8
+data['f10_1'] = fn.set_field_value_to_new_value(raw_data, 'f10_1', 0, 8)
+data['f10_2'] = fn.set_field_value_to_new_value(raw_data, 'f10_2', 0, 8)
+
+# f11 - categorize
+# catalogue
+raw_catalogue = data[['f11_1', 'f11_2', 'f11_3', 'f11_4', 'f11_5', 'f11_6', 'f11_7']].replace(' ', '0')
+trans_catalogue = raw_catalogue.transpose()
+sum_catalogue = fn.sum_characteristics(trans_catalogue.values)
+catalogue = pd.DataFrame(sum_catalogue).replace(2, 1).rename(index=str, columns={0: 'catalogue'})
