@@ -42,3 +42,13 @@ def descriptive_statistics(data):
 def set_field_value_to_new_value(data, field, replace_value, new_value):
     data[field] = data[field].replace(replace_value, new_value)
     return data[field]
+
+
+# helper method for filling in empty values, replace them and convert them into int
+def question_cleaning(data, field, rep_value, rep_with):
+    data[field] = set_empty_values_new(data, field)
+    data[field] = set_field_value_to_new_value(data, field, rep_value, rep_with)
+    # to int, if numbers are strings
+    if isinstance(rep_value, str):
+        data[field] = data[field].astype(np.int)
+    return data[field]

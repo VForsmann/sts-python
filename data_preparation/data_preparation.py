@@ -1,11 +1,13 @@
 import functions as fn
-
+import numpy as np
 raw_data = fn.load_data('../daten_robinson.csv')
+tmp_field = []
 # print(fn.set_zero_to_median(raw_data, 'f22'))
 # set_empty_values_new('f17_Comment')
 # set_empty_values_new('f17', replace_value='-99')
 # set_field_value_to_new_value('f1', 0, 1)
 # print(fn.descriptive_statistics(raw_data)['f22'])
+
 
 # removes row with empty values
 data = raw_data.drop(index=87)
@@ -58,3 +60,20 @@ data['f5_9'] = fn.set_field_value_to_new_value(raw_data, 'f5_9', 0, 8)
 data['f5_10'] = fn.set_field_value_to_new_value(raw_data, 'f5_10', 0, 8)
 data['f5_11'] = fn.set_field_value_to_new_value(raw_data, 'f5_11', 0, 8)
 
+
+# Clean F15
+tmp_field = ['f15_1', 'f15_2', 'f15_3', 'f15_4', 'f15_5', 'f15_6', 'f15_7', 'f15_8', 'f15_9', 'f15_10', 'f15_11',
+             'f15_12', 'f15_13', 'f15_14', 'f15_15', 'f15_16']
+data[tmp_field] = fn.question_cleaning(data, tmp_field, rep_value='0', rep_with=8)
+
+# Clean F16
+tmp_field = ['f16_1', 'f16_2', 'f16_3', 'f16_4', 'f16_5', 'f16_6', 'f16_7', 'f16_8', 'f16_9']
+data[tmp_field] = fn.question_cleaning(data, tmp_field, rep_value='0', rep_with=8)
+
+# Clean F18
+tmp_field = ['f18_1', 'f18_2', 'f18_3', 'f18_4', 'f18_5', 'f18_6', 'f18_7', 'f18_8', 'f18_9']
+data[tmp_field] = fn.question_cleaning(data, tmp_field, rep_value='0', rep_with=8)
+
+# Clean F19
+tmp_field = ['f19_1', 'f19_2', 'f19_3', 'f19_4', 'f19_5', 'f19_6', 'f19_7', 'f19_8', 'f19_9', 'f19_10']
+data[tmp_field] = fn.question_cleaning(data, tmp_field, rep_value='0', rep_with=8)
