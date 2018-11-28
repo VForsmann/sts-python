@@ -20,9 +20,10 @@ def set_empty_values_new(field, replace_value=' '):
 
 # replace a value zero to median of the field
 def set_zero_to_median(field):
-    median = data[data != 0].median(skipna=True)
-    data[field] = data[field].mask(data[field] == 0, median[field])
-    print(data[field])
+    answer = np.array(data[[field]])
+    median = np.median(answer[answer > 0])
+    answer[answer == 0] = median
+    data[field] = answer
 
 
 # replace every zero value with the median
@@ -34,11 +35,7 @@ def clean_years():
 
 
 def descriptive_statistics():
-    print(data.describe())
-
-
-def boxplot():
-    plt.boxplot(data['f17'])
+    data.describe()
 
 
 descriptive_statistics()
@@ -50,6 +47,7 @@ def set_field_value_to_new_value(field, replace_value, new_value):
     print(data[field])
 
 
-set_empty_values_new('f17_Comment')
-set_empty_values_new('f17', replace_value='-99')
-set_field_value_to_new_value('f1', 0, 1)
+set_zero_to_median('f22')
+# set_empty_values_new('f17_Comment')
+# set_empty_values_new('f17', replace_value='-99')
+# set_field_value_to_new_value('f1', 0, 1)
