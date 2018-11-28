@@ -1,5 +1,4 @@
 import functions as fn
-import numpy as np
 
 raw_data = fn.load_data('../daten_robinson.csv')
 # print(fn.set_zero_to_median(raw_data, 'f22'))
