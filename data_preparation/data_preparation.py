@@ -21,46 +21,19 @@ data['f1'] = fn.set_zero_to_median(raw_data, 'f1')
 data['f2'] = fn.set_zero_to_median(raw_data, 'f2')
 
 # f3_1 - f3_11 - set zero values to 8 --> not answered
-data['f3_1'] = fn.set_field_value_to_new_value(raw_data, 'f3_1', 0, 8)
-data['f3_2'] = fn.set_field_value_to_new_value(raw_data, 'f3_2', 0, 8)
-data['f3_3'] = fn.set_field_value_to_new_value(raw_data, 'f3_3', 0, 8)
-data['f3_4'] = fn.set_field_value_to_new_value(raw_data, 'f3_4', 0, 8)
-data['f3_5'] = fn.set_field_value_to_new_value(raw_data, 'f3_5', 0, 8)
-data['f3_6'] = fn.set_field_value_to_new_value(raw_data, 'f3_6', 0, 8)
-data['f3_7'] = fn.set_field_value_to_new_value(raw_data, 'f3_7', 0, 8)
-data['f3_8'] = fn.set_field_value_to_new_value(raw_data, 'f3_8', 0, 8)
-data['f3_9'] = fn.set_field_value_to_new_value(raw_data, 'f3_9', 0, 8)
-data['f3_10'] = fn.set_field_value_to_new_value(raw_data, 'f3_10', 0, 8)
-data['f3_11'] = fn.set_field_value_to_new_value(raw_data, 'f3_11', 0, 8)
+tmp_field = ['f3_1', 'f3_2', 'f3_3', 'f3_4', 'f3_5', 'f3_6', 'f3_7', 'f3_8', 'f3_9', 'f3_10', 'f3_11', ]
+data[tmp_field] = fn.question_cleaning(data, tmp_field, '0', 8)
+
 
 # f4_1 - f4_11 - set zero values to 8 --> not answered
-data['f4_1'] = fn.set_field_value_to_new_value(raw_data, 'f4_1', 0, 8)
-data['f4_2'] = fn.set_field_value_to_new_value(raw_data, 'f4_2', 0, 8)
-data['f4_3'] = fn.set_field_value_to_new_value(raw_data, 'f4_3', 0, 8)
-data['f4_4'] = fn.set_field_value_to_new_value(raw_data, 'f4_4', 0, 8)
-data['f4_5'] = fn.set_field_value_to_new_value(raw_data, 'f4_5', 0, 8)
-data['f4_6'] = fn.set_field_value_to_new_value(raw_data, 'f4_6', 0, 8)
-data['f4_7'] = fn.set_field_value_to_new_value(raw_data, 'f4_7', 0, 8)
-data['f4_8'] = fn.set_field_value_to_new_value(raw_data, 'f4_8', 0, 8)
-data['f4_9'] = fn.set_field_value_to_new_value(raw_data, 'f4_9', 0, 8)
-data['f4_10'] = fn.set_field_value_to_new_value(raw_data, 'f4_10', 0, 8)
-data['f4_11'] = fn.set_field_value_to_new_value(raw_data, 'f4_11', 0, 8)
-data['f4_12'] = fn.set_field_value_to_new_value(raw_data, 'f4_12', 0, 8)
-data['f4_13'] = fn.set_field_value_to_new_value(raw_data, 'f4_13', 0, 8)
-data['f4_14'] = fn.set_field_value_to_new_value(raw_data, 'f4_14', 0, 8)
+tmp_field = ['f4_1', 'f4_2', 'f4_3', 'f4_4', 'f4_5', 'f4_6', 'f4_7', 'f4_8', 'f4_9', 'f4_10', 'f4_11', 'f4_12', 'f4_13',
+             'f4_14']
+data[tmp_field] = fn.question_cleaning(data,tmp_field, '0', 8)
+
 
 # f5_1 - f5_14 - set zero values to 8 --> not answered
-data['f5_1'] = fn.set_field_value_to_new_value(raw_data, 'f5_1', 0, 8)
-data['f5_2'] = fn.set_field_value_to_new_value(raw_data, 'f5_2', 0, 8)
-data['f5_3'] = fn.set_field_value_to_new_value(raw_data, 'f5_3', 0, 8)
-data['f5_4'] = fn.set_field_value_to_new_value(raw_data, 'f5_4', 0, 8)
-data['f5_5'] = fn.set_field_value_to_new_value(raw_data, 'f5_5', 0, 8)
-data['f5_6'] = fn.set_field_value_to_new_value(raw_data, 'f5_6', 0, 8)
-data['f5_7'] = fn.set_field_value_to_new_value(raw_data, 'f5_7', 0, 8)
-data['f5_8'] = fn.set_field_value_to_new_value(raw_data, 'f5_8', 0, 8)
-data['f5_9'] = fn.set_field_value_to_new_value(raw_data, 'f5_9', 0, 8)
-data['f5_10'] = fn.set_field_value_to_new_value(raw_data, 'f5_10', 0, 8)
-data['f5_11'] = fn.set_field_value_to_new_value(raw_data, 'f5_11', 0, 8)
+tmp_field = ['f5_1', 'f5_2', 'f5_3', 'f5_4', 'f5_5', 'f5_6', 'f5_7', 'f5_8', 'f5_9', 'f5_10', 'f5_11']
+data[tmp_field] = fn.question_cleaning(data, tmp_field, '0', 8)
 
 # Clean F15
 tmp_field = ['f15_1', 'f15_2', 'f15_3', 'f15_4', 'f15_5', 'f15_6', 'f15_7', 'f15_8', 'f15_9', 'f15_10', 'f15_11',
