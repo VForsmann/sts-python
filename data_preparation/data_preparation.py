@@ -88,3 +88,20 @@ raw_catalogue = data[['f11_1', 'f11_2', 'f11_3', 'f11_4', 'f11_5', 'f11_6', 'f11
 trans_catalogue = raw_catalogue.transpose()
 sum_catalogue = fn.sum_characteristics(trans_catalogue.values)
 catalogue = pd.DataFrame(sum_catalogue).replace(2, 1).rename(index=str, columns={0: 'catalogue'})
+# internet
+raw_internet = data[['f11_8', 'f11_9']].replace(' ', '0')
+trans_internet = raw_internet.transpose()
+sum_internet = fn.sum_characteristics(trans_internet.values)
+internet = pd.DataFrame(sum_internet).replace(2, 1).rename(index=str, columns={0: 'internet'})
+# other
+raw_other = data[['f11_10']].replace(' ', '0')
+trans_other = raw_other.transpose()
+sum_other = fn.sum_characteristics(trans_other.values)
+other = pd.DataFrame(sum_other).replace(2, 1).rename(index=str, columns={0: 'other'})
+
+data = [data, catalogue, internet, other]
+
+# f12 - sum
+logos = raw_data[['f12_1', 'f12_2', 'f12_3', 'f12_4', 'f12_5', 'f12_6', 'f12_7', 'f12_8', 'f12_9']].replace(' ', '0')
+sum_logos = fn.sum_characteristics(logos.values)
+print(sum_logos)
