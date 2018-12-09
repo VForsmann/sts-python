@@ -11,39 +11,33 @@ pd.set_option('display.max_columns', 500)
 # Selektieren und löschen von der Person mit der ID 88 der nichts mehr ausgefüllt hat
 data = raw_data.drop(index=87)
 
+# Ersetzen von leeren Strings der Ankreuzmöglichkeiten zu -> gar nichts angekreuzt
+data[['f11_7', 'f12_4', 'f15_8']] = data[['f11_7', 'f12_4', 'f15_8']].replace(' ', 0)
+
+# Ersetzt alle Leerstrings von allen Textfeldern mit 'nicht ausgefuellt'
+tmp = ['f3_txt_val', 'f3_txt', 'f4_txt_val', 'f4_txt', 'f5_txt_val', 'f5_txt',
+      'f6_txt', 'f7_txt', 'f11_txt', 'f14_txt', 'f15_txt_val', 'f15_txt', 'f17_Comment', 'f24', 'f25_1']
+data[tmp] = data[tmp].replace(' ', 'nicht ausgefuellt')
+
+data[['f23_1', 'f23_2', 'f23_3', 'f23_4']] = data[['f23_1', 'f23_2', 'f23_3', 'f23_4']].replace(' ', 0)
+
+# Wenn jemand nichts auszusetzen hatte oder aehnliches ersetzt durch "nicht ausgefuellt"
+data['f7_txt'] = data['f7_txt'].replace(['-', './.', 'Nichts', 'Nichts!', 'nichts', 'eigentlich nichts', 'Keine Wünsche', 'Alles prima - super Auswahl', 'Absolut gar nichts', 'Überhaupt nichts', 'Nichts, fast zu üppig und verschwenderisch', 'keine Ahnung', 'Uns fehlt nichts.'], 'nicht ausgefuellt')
+
+# Ausreißer und ungueltige Werte behandeln und ersetzen
+data['f16_8'] = data['f16_8'].replace('77', 8)
+data['f19_6'] = data['f19_6'].replace('22', 8)
+data['f18_3'] = data['f18_3'].replace('9', 8)
+data['f26'] = data['f26'].replace('0', 7)
+
+# neue Variable Altersklassen Skalierung ordinal 0 = keine Angabe, 1 = junger Erwachsener (bis 25), 2 = mittlerer Erwachsener (bis 45), 3 = alter Erwachesener (>45)
+data = fn.create_age(data)
+
+
 # Gibt die Ausprägung von einer Spalte an
 for c in data.columns:
     print("---- %s ---" % c)
     print(data[c].value_counts())
-
-# Ersetzen von leeren Strings der Ankreuzmöglichkeiten zu -> gar nichts angekreuzt
-data[['f11_7', 'f12_4', 'f15_8']] = data[['f11_7', 'f12_4', 'f15_8']].replace(' ', 0)
-
-# Leere Strings mit NaN ersetzen
-data = data.replace(' ', np.nan)
-
-# Eine Liste mit den Header feldern die ein NaN-Wert enthalten
-null_columns = data.columns[data.isna().any()]
-print(null_columns)
-
-# Ausreißer behandeln und ersetzen
-data['f16_8'] = data['f16_8'].replace('77', 8)
-data['f19_6'] = data['f19_6'].replace('22', 8)
-data['f18_3'] = data['f18_3'].replace('9', 8)
-
-# Alle Kommentar Kommentar Felder von NaN -> -99
-# print(data[['f3_txt_val', 'f3_txt', 'f4_txt_val', 'f4_txt', 'f5_txt_val', 'f5_txt',
-#       'f6_txt', 'f7_txt', 'f11_7', 'f11_txt', 'f12_4', 'f14_txt', 'f15_8',
-#       'f15_txt_val', 'f15_txt', 'f17_Comment', 'f23_1', 'f23_2', 'f23_3',
-#      'f23_4', 'f24', 'f25_1']].value_counts())
-
-data[null_columns] = data[null_columns].replace(np.nan, -99)
-data['f23_2'] = data['f23_2'].replace(-99, np.nan)
-# Tabelle mit den Rows die min. einmal NaN haben (null_columns gibt
-rows_with_nan = data.isnull().any(axis=1)
-
-# Ersetzen der NaN Werte mit -99 => -99 gilt für nicht ausgefüllt => Leer
-
 
 #
 # # f1 - set zero values to median
@@ -66,23 +60,6 @@ rows_with_nan = data.isnull().any(axis=1)
 # # f5_1 - f5_14 - set zero values to 8 --> not answered
 # tmp_field = ['f5_1', 'f5_2', 'f5_3', 'f5_4', 'f5_5', 'f5_6', 'f5_7', 'f5_8', 'f5_9', 'f5_10', 'f5_11']
 # data[tmp_field] = fn.question_cleaning(data, tmp_field, '0', 8)
-#
-# # Clean F15
-# tmp_field = ['f15_1', 'f15_2', 'f15_3', 'f15_4', 'f15_5', 'f15_6', 'f15_7', 'f15_8', 'f15_9', 'f15_10', 'f15_11',
-#              'f15_12', 'f15_13', 'f15_14', 'f15_15', 'f15_16']
-# data[tmp_field] = fn.question_cleaning(data, tmp_field, rep_value='0', rep_with=8)
-#
-# # Clean F16
-# tmp_field = ['f16_1', 'f16_2', 'f16_3', 'f16_4', 'f16_5', 'f16_6', 'f16_7', 'f16_8', 'f16_9']
-# data[tmp_field] = fn.question_cleaning(data, tmp_field, rep_value='0', rep_with=8)
-#
-# # Clean F18
-# tmp_field = ['f18_1', 'f18_2', 'f18_3', 'f18_4', 'f18_5', 'f18_6', 'f18_7', 'f18_8', 'f18_9']
-# data[tmp_field] = fn.question_cleaning(data, tmp_field, rep_value='0', rep_with=8)
-#
-# # Clean F19
-# tmp_field = ['f19_1', 'f19_2', 'f19_3', 'f19_4', 'f19_5', 'f19_6', 'f19_7', 'f19_8', 'f19_9', 'f19_10']
-# data[tmp_field] = fn.question_cleaning(data, tmp_field, rep_value='0', rep_with=8)
 #
 # # f6 - set zero values to 8
 # data['f6_1'] = fn.set_field_value_to_new_value(raw_data, 'f6_1', 0, 8)

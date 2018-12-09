@@ -52,3 +52,14 @@ def question_cleaning(data, field, rep_value, rep_with):
     if isinstance(rep_value, str):
         data[field] = data[field].astype(np.int)
     return data[field]
+
+# creates new variable Altersklasse which is clustered
+def create_age(data):
+    data['Alter'] = 2018 - data['f22']
+    data['Alter'] = data['Alter'].replace(2018, 0)
+    data['Altersklasse'] = 0
+    data['Altersklasse'][data['Alter'] >= 2017] = 0
+    data['Altersklasse'][data['Alter'] <= 30] = 1
+    data['Altersklasse'][(data['Alter'] >= 30) & (data['Alter'] <= 50)] = 2
+    data['Altersklasse'][(data['Alter'] >= 50) & (data['Alter'] <= 2017)] = 3
+    return data
