@@ -3,7 +3,6 @@ import functions as fn
 import numpy as np
 
 raw_data = fn.load_data('../daten_robinson.csv')
-tmp_field = []
 pd.set_option('display.max_rows', 500)
 pd.set_option('display.max_columns', 500)
 # print(fn.descriptive_statistics(raw_data)['f22'])
@@ -19,6 +18,7 @@ tmp = ['f3_txt_val', 'f3_txt', 'f4_txt_val', 'f4_txt', 'f5_txt_val', 'f5_txt',
       'f6_txt', 'f7_txt', 'f11_txt', 'f14_txt', 'f15_txt_val', 'f15_txt', 'f17_Comment', 'f24', 'f25_1']
 data[tmp] = data[tmp].replace(' ', 'nicht ausgefuellt')
 
+# Kinderalter die einen leeren String enthalten werden auf 0 gesetzt
 data[['f23_1', 'f23_2', 'f23_3', 'f23_4']] = data[['f23_1', 'f23_2', 'f23_3', 'f23_4']].replace(' ', 0)
 
 # Wenn jemand nichts auszusetzen hatte oder aehnliches ersetzt durch "nicht ausgefuellt"
@@ -33,12 +33,16 @@ data['f26'] = data['f26'].replace('0', 7)
 # neue Variable Altersklassen Skalierung ordinal 0 = keine Angabe, 1 = junger Erwachsener (bis 25), 2 = mittlerer Erwachsener (bis 45), 3 = alter Erwachesener (>45)
 data = fn.create_age(data)
 
-
 # Gibt die Ausprägung von einer Spalte an
 for c in data.columns:
     print("---- %s ---" % c)
     print(data[c].value_counts())
+print(data['f23_1'].astype('str').replace(',', '.'))
+data['f23_1'].to_string().replace(',', '.')
 
+
+# print(data['Alter'].replace(0, np.nan).describe())
+# print(pd.to_numeric(data['f26']))
 # # f1 - set zero values to median
 # data['f1'] = fn.set_zero_to_median(raw_data, 'f1')
 #
