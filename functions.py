@@ -63,3 +63,11 @@ def create_age(data):
     data.loc[(data['Alter'] >= 30) & (data['Alter'] <= 50), ['Altersklasse']] = 2
     data.loc[(data['Alter'] >= 50) & (data['Alter'] <= 2017), ['Altersklasse']] = 3
     return data
+
+# creates new variable income_class which is clustered
+def create_income_class(data):
+    data['income_class'] = 0
+    data.loc[(data['f26'] == 1) | (data['f26'] == 2), ['income_class']] = 1
+    data.loc[(data['f26'] == 3) | (data['f26'] == 4), ['income_class']] = 2
+    data.loc[(data['f26'] == 5) | (data['f26'] == 6), ['income_class']] = 3
+    return data

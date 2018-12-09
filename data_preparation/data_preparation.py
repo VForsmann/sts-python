@@ -3,7 +3,6 @@ import pandas as pd
 import functions as fn
 
 raw_data = fn.load_data('../daten_robinson.csv')
-tmp_field = []
 pd.set_option('display.max_rows', 500)
 pd.set_option('display.max_columns', 500)
 # print(fn.descriptive_statistics(raw_data)['f22'])
@@ -19,6 +18,7 @@ tmp = ['f3_txt_val', 'f3_txt', 'f4_txt_val', 'f4_txt', 'f5_txt_val', 'f5_txt',
       'f6_txt', 'f7_txt', 'f11_txt', 'f14_txt', 'f15_txt_val', 'f15_txt', 'f17_Comment', 'f24', 'f25_1']
 data[tmp] = data[tmp].replace(' ', 'nicht ausgefuellt')
 
+# Kinderalter die einen leeren String enthalten werden auf 0 gesetzt
 data[['f23_1', 'f23_2', 'f23_3', 'f23_4']] = data[['f23_1', 'f23_2', 'f23_3', 'f23_4']].replace(' ', 0)
 
 # Wenn jemand nichts auszusetzen hatte oder aehnliches ersetzt durch "nicht ausgefuellt"
@@ -32,6 +32,18 @@ data['f26'] = data['f26'].replace('0', 7)
 
 # neue Variable Altersklassen Skalierung ordinal 0 = keine Angabe, 1 = junger Erwachsener (bis 25), 2 = mittlerer Erwachsener (bis 45), 3 = alter Erwachesener (>45)
 data = fn.create_age(data)
+
+# Calculate mean of the percentage with zero and without zero
+data['f17'] = pd.to_numeric(data['f17'].astype('str').str.replace(',', '.'), errors='coerce')
+only_percentages = data['f17'][data['f17'] > 0].describe()
+with_zero_percentage = data['f17'][data['f17'] > -1].describe()
+
+# Get Statistics of income
+data['f26'] = pd.to_numeric(data['f26'].astype('str').str.replace(',', '.'), errors='coerce')
+income_statistics = data['f26'][data['f26'] < 7].describe()
+
+# create income classes
+data = fn.create_income_class(data)
 
 # f11 - categorize
 # catalogue
