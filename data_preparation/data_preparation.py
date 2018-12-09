@@ -10,6 +10,12 @@ pd.set_option('display.max_columns', 500)
 # Selektieren und löschen von der Person mit der ID 88 der nichts mehr ausgefüllt hat
 data = raw_data.drop(index=87)
 
+# Ausreißer und ungueltige Werte behandeln und ersetzen
+data['f16_8'] = data['f16_8'].replace('77', 8)
+data['f19_6'] = data['f19_6'].replace('22', 8)
+data['f18_3'] = data['f18_3'].replace('9', 8)
+data['f26'] = data['f26'].replace('0', 7)
+
 # Ersetzen von leeren Strings der Ankreuzmöglichkeiten zu -> gar nichts angekreuzt
 data[['f11_7', 'f12_4', 'f15_8']] = data[['f11_7', 'f12_4', 'f15_8']].replace(' ', 0)
 
@@ -24,26 +30,6 @@ data[['f23_1', 'f23_2', 'f23_3', 'f23_4']] = data[['f23_1', 'f23_2', 'f23_3', 'f
 # Wenn jemand nichts auszusetzen hatte oder aehnliches ersetzt durch "nicht ausgefuellt"
 data['f7_txt'] = data['f7_txt'].replace(['-', './.', 'Nichts', 'Nichts!', 'nichts', 'eigentlich nichts', 'Keine Wünsche', 'Alles prima - super Auswahl', 'Absolut gar nichts', 'Überhaupt nichts', 'Nichts, fast zu üppig und verschwenderisch', 'keine Ahnung', 'Uns fehlt nichts.'], 'nicht ausgefuellt')
 
-# Ausreißer und ungueltige Werte behandeln und ersetzen
-data['f16_8'] = data['f16_8'].replace('77', 8)
-data['f19_6'] = data['f19_6'].replace('22', 8)
-data['f18_3'] = data['f18_3'].replace('9', 8)
-data['f26'] = data['f26'].replace('0', 7)
-
-# neue Variable Altersklassen Skalierung ordinal 0 = keine Angabe, 1 = junger Erwachsener (bis 25), 2 = mittlerer Erwachsener (bis 45), 3 = alter Erwachesener (>45)
-data = fn.create_age(data)
-
-# Calculate mean of the percentage with zero and without zero
-data['f17'] = pd.to_numeric(data['f17'].astype('str').str.replace(',', '.'), errors='coerce')
-only_percentages = data['f17'][data['f17'] > 0].describe()
-with_zero_percentage = data['f17'][data['f17'] > -1].describe()
-
-# Get Statistics of income
-data['f26'] = pd.to_numeric(data['f26'].astype('str').str.replace(',', '.'), errors='coerce')
-income_statistics = data['f26'][data['f26'] < 7].describe()
-
-# create income classes
-data = fn.create_income_class(data)
 
 # f11 - categorize
 # catalogue
@@ -62,11 +48,27 @@ trans_other = raw_other.transpose()
 sum_other = fn.sum_characteristics(trans_other.values)
 other = pd.DataFrame(sum_other).replace(2, 1).rename(index=str, columns={0: 'other'})
 
+data['catalogue'] = catalogue.values
+data['internet'] = internet.values
+data['other'] = other.values
+
+
 # f12 - sum
-logos = raw_data[['f12_1', 'f12_2', 'f12_3', 'f12_4', 'f12_5', 'f12_6', 'f12_7', 'f12_8', 'f12_9']].replace(' ', '0')
+logos = data[['f12_1', 'f12_2', 'f12_3', 'f12_4', 'f12_5', 'f12_6', 'f12_7', 'f12_8', 'f12_9']].replace(' ', '0')
 sum_logos = fn.sum_characteristics(logos.values)
 
-# f23 converting into double and calculate the difference between parents and children
+
+# f17 Calculate mean of the percentage with zero and without zero
+data['f17'] = pd.to_numeric(data['f17'].astype('str').str.replace(',', '.'), errors='coerce')
+only_percentages = data['f17'][data['f17'] > 0].describe()
+with_zero_percentage = data['f17'][data['f17'] > -1].describe()
+
+
+# f22 neue Variable Altersklassen Skalierung ordinal 0 = keine Angabe, 1 = junger Erwachsener (bis 25),
+# 2 = mittlerer Erwachsener (bis 45), 3 = alter Erwachesener (>45)
+data = fn.create_age(data)
+
+# f23 converting object into double and calculate the difference between parents and children
 data['f23_1'] = pd.to_numeric(data['f23_1'].astype('str').str.replace(',', '.'), errors='coerce')
 data['f23_2'] = pd.to_numeric(data['f23_2'].astype('str').str.replace(',', '.'), errors='coerce')
 data['f23_3'] = pd.to_numeric(data['f23_3'].astype('str').str.replace(',', '.'), errors='coerce')
@@ -75,6 +77,7 @@ dif_parent_first_child = data['Alter'][data['Alter'] > 0] - data['f23_1'][data['
 dif_parent_second_child = data['Alter'][data['Alter'] > 0] - data['f23_2'][data['f23_2'] > 0]
 dif_parent_third_child = data['Alter'][data['Alter'] > 0] - data['f23_3'][data['f23_3'] > 0]
 dif_parent_fourth_child = data['Alter'][data['Alter'] > 0] - data['f23_4'][data['f23_4'] > 0]
+
 
 # f25 cleaning up PLZ
 data['f25_2'] = pd.to_numeric(data['f25_2'])
@@ -85,6 +88,14 @@ data.loc[(data['f25_1'].isin(['RUS'])) & ((data['f25_2'] <= 100000) | (data['f25
 
 ger_plz = data['f25_2'][(data['f25_1'].isin(['D']))] / 10000
 ger_plz_sum = ger_plz.astype(int).value_counts()
+
+
+# f26 Get Statistics of income
+data['f26'] = pd.to_numeric(data['f26'].astype('str').str.replace(',', '.'), errors='coerce')
+income_statistics = data['f26'][data['f26'] < 7].describe()
+# create income classes
+data = fn.create_income_class(data)
+
 
 # Gibt die Ausprägung von einer Spalte an
 for c in data.columns:
