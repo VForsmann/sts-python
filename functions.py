@@ -62,4 +62,3 @@ def create_age(data):
     data['Altersklasse'][(data['Alter'] >= 30) & (data['Alter'] <= 50)] = 2
     data['Altersklasse'][(data['Alter'] >= 50) & (data['Alter'] <= 2017)] = 3
     return data
-
