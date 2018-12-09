@@ -39,7 +39,6 @@ for c in data.columns:
     print("---- %s ---" % c)
     print(data[c].value_counts())
 
-#
 # # f1 - set zero values to median
 # data['f1'] = fn.set_zero_to_median(raw_data, 'f1')
 #
