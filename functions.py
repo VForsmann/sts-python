@@ -59,7 +59,7 @@ def create_age(data):
     data['Alter'] = 2018 - data['f22']
     data['Alter'] = data['Alter'].replace(2018, 0)
     data['Altersklasse'] = 0
-    data['Altersklasse'][(data['Alter'] <= 30) & (data['Alter'] > 0)] = 1
-    data['Altersklasse'][(data['Alter'] >= 30) & (data['Alter'] <= 50)] = 2
-    data['Altersklasse'][(data['Alter'] >= 50) & (data['Alter'] <= 2017)] = 3
+    data.loc[(data['Alter'] <= 30) & (data['Alter'] > 0), ['Altersklasse']] = 1
+    data.loc[(data['Alter'] >= 30) & (data['Alter'] <= 50), ['Altersklasse']] = 2
+    data.loc[(data['Alter'] >= 50) & (data['Alter'] <= 2017), ['Altersklasse']] = 3
     return data
