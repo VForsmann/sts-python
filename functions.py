@@ -53,6 +53,7 @@ def question_cleaning(data, field, rep_value, rep_with):
         data[field] = data[field].astype(np.int)
     return data[field]
 
+
 # creates new variable Altersklasse which is clustered
 def create_age(data):
     data['Alter'] = 2018 - data['f22']
@@ -63,3 +64,10 @@ def create_age(data):
     data['Altersklasse'][(data['Alter'] >= 50) & (data['Alter'] <= 2017)] = 3
     return data
 
+# creates new variable income_class which is clustered
+def create_income_class(data):
+    data['income_class'] = 0
+    data.loc[(data['f26'] == 1) | (data['f26'] == 2), ['income_class']] = 1
+    data.loc[(data['f26'] == 3) | (data['f26'] == 4), ['income_class']] = 2
+    data.loc[(data['f26'] == 5) | (data['f26'] == 6), ['income_class']] = 3
+    return data

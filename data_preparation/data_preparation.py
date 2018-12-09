@@ -1,6 +1,6 @@
 import pandas as pd
+
 import functions as fn
-import numpy as np
 
 raw_data = fn.load_data('../daten_robinson.csv')
 pd.set_option('display.max_rows', 500)
@@ -33,62 +33,50 @@ data['f26'] = data['f26'].replace('0', 7)
 # neue Variable Altersklassen Skalierung ordinal 0 = keine Angabe, 1 = junger Erwachsener (bis 25), 2 = mittlerer Erwachsener (bis 45), 3 = alter Erwachesener (>45)
 data = fn.create_age(data)
 
+data['f23_1'] = pd.to_numeric(data['f23_1'].astype('str').str.replace(',', '.'), errors='coerce')
+data['f23_2'] = pd.to_numeric(data['f23_2'].astype('str').str.replace(',', '.'), errors='coerce')
+data['f23_3'] = pd.to_numeric(data['f23_3'].astype('str').str.replace(',', '.'), errors='coerce')
+data['f23_4'] = pd.to_numeric(data['f23_4'].astype('str').str.replace(',', '.'), errors='coerce')
+dif_parent_first_child = data['Alter'][data['Alter'] > 0] - data['f23_1'][data['f23_1'] > 0]
+dif_parent_second_child = data['Alter'][data['Alter'] > 0] - data['f23_2'][data['f23_2'] > 0]
+dif_parent_third_child = data['Alter'][data['Alter'] > 0] - data['f23_3'][data['f23_3'] > 0]
+dif_parent_fourth_child = data['Alter'][data['Alter'] > 0] - data['f23_4'][data['f23_4'] > 0]
+
+# Calculate mean of the percentage with zero and without zero
+data['f17'] = pd.to_numeric(data['f17'].astype('str').str.replace(',', '.'), errors='coerce')
+only_percentages = data['f17'][data['f17'] > 0].describe()
+with_zero_percentage = data['f17'][data['f17'] > -1].describe()
+
+# Get Statistics of income
+data['f26'] = pd.to_numeric(data['f26'].astype('str').str.replace(',', '.'), errors='coerce')
+income_statistics = data['f26'][data['f26'] < 7].describe()
+
+# create income classes
+data = fn.create_income_class(data)
+
 # Gibt die Ausprägung von einer Spalte an
 for c in data.columns:
     print("---- %s ---" % c)
     print(data[c].value_counts())
-print(data['f23_1'].astype('str').replace(',', '.'))
-data['f23_1'].to_string().replace(',', '.')
-
-
-# print(data['Alter'].replace(0, np.nan).describe())
-# print(pd.to_numeric(data['f26']))
-# # f1 - set zero values to median
-# data['f1'] = fn.set_zero_to_median(raw_data, 'f1')
-#
-# # f2 - set zero values to median
-# data['f2'] = fn.set_zero_to_median(raw_data, 'f2')
-#
-# # f3_1 - f3_11 - set zero values to 8 --> not answered
-# tmp_field = ['f3_1', 'f3_2', 'f3_3', 'f3_4', 'f3_5', 'f3_6', 'f3_7', 'f3_8', 'f3_9', 'f3_10', 'f3_11', ]
-# data[tmp_field] = fn.question_cleaning(data, tmp_field, '0', 8)
-#
-#
-# # f4_1 - f4_11 - set zero values to 8 --> not answered
-# tmp_field = ['f4_1', 'f4_2', 'f4_3', 'f4_4', 'f4_5', 'f4_6', 'f4_7', 'f4_8', 'f4_9', 'f4_10', 'f4_11', 'f4_12', 'f4_13',
-#              'f4_14']
-# data[tmp_field] = fn.question_cleaning(data,tmp_field, '0', 8)
-#
-#
-# # f5_1 - f5_14 - set zero values to 8 --> not answered
-# tmp_field = ['f5_1', 'f5_2', 'f5_3', 'f5_4', 'f5_5', 'f5_6', 'f5_7', 'f5_8', 'f5_9', 'f5_10', 'f5_11']
-# data[tmp_field] = fn.question_cleaning(data, tmp_field, '0', 8)
-#
-# # f6 - set zero values to 8
-# data['f6_1'] = fn.set_field_value_to_new_value(raw_data, 'f6_1', 0, 8)
-# data['f6_2'] = fn.set_field_value_to_new_value(raw_data, 'f6_2', 0, 8)
-# data['f6_3'] = fn.set_field_value_to_new_value(raw_data, 'f6_3', 0, 8)
-# data['f6_4'] = fn.set_field_value_to_new_value(raw_data, 'f6_4', 0, 8)
-# data['f6_5'] = fn.set_field_value_to_new_value(raw_data, 'f6_5', 0, 8)
-# data['f6_6'] = fn.set_field_value_to_new_value(raw_data, 'f6_6', 0, 8)
-# data['f6_7'] = fn.set_field_value_to_new_value(raw_data, 'f6_7', 0, 8)
-# data['f6_8'] = fn.set_field_value_to_new_value(raw_data, 'f6_8', 0, 8)
-# data['f6_9'] = fn.set_field_value_to_new_value(raw_data, 'f6_9', 0, 8)
-#
-# # f7 - we do not use this question because of too large variations
-#
-# # f8 - set zero value to median
-# data['f8'] = fn.set_zero_to_median(raw_data, 'f8')
-#
-# # f9 - there is nothing to do here.
-#
-# # f10 - set zero values to 8
-# data['f10_1'] = fn.set_field_value_to_new_value(raw_data, 'f10_1', 0, 8)
-# data['f10_2'] = fn.set_field_value_to_new_value(raw_data, 'f10_2', 0, 8)
-
 # f11 - categorize
 # catalogue
 raw_catalogue = data[['f11_1', 'f11_2', 'f11_3', 'f11_4', 'f11_5', 'f11_6', 'f11_7']].replace(' ', '0')
 trans_catalogue = raw_catalogue.transpose()
 sum_catalogue = fn.sum_characteristics(trans_catalogue.values)
 catalogue = pd.DataFrame(sum_catalogue).replace(2, 1).rename(index=str, columns={0: 'catalogue'})
+# internet
+raw_internet = data[['f11_8', 'f11_9']].replace(' ', '0')
+trans_internet = raw_internet.transpose()
+sum_internet = fn.sum_characteristics(trans_internet.values)
+internet = pd.DataFrame(sum_internet).replace(2, 1).rename(index=str, columns={0: 'internet'})
+# other
+raw_other = data[['f11_10']].replace(' ', '0')
+trans_other = raw_other.transpose()
+sum_other = fn.sum_characteristics(trans_other.values)
+other = pd.DataFrame(sum_other).replace(2, 1).rename(index=str, columns={0: 'other'})
+
+data = [data, catalogue, internet, other]
+
+# f12 - sum
+logos = raw_data[['f12_1', 'f12_2', 'f12_3', 'f12_4', 'f12_5', 'f12_6', 'f12_7', 'f12_8', 'f12_9']].replace(' ', '0')
+sum_logos = fn.sum_characteristics(logos.values)
