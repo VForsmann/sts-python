@@ -42,3 +42,24 @@ def descriptive_statistics(data):
 def set_field_value_to_new_value(data, field, replace_value, new_value):
     data[field] = data[field].replace(replace_value, new_value)
     return data[field]
+
+
+# helper method for filling in empty values, replace them and convert them into int
+def question_cleaning(data, field, rep_value, rep_with):
+    data[field] = set_empty_values_new(data, field)
+    data[field] = set_field_value_to_new_value(data, field, rep_value, rep_with)
+    # to int, if numbers are strings
+    if isinstance(rep_value, str):
+        data[field] = data[field].astype(np.int)
+    return data[field]
+
+# creates new variable Altersklasse which is clustered
+def create_age(data):
+    data['Alter'] = 2018 - data['f22']
+    data['Alter'] = data['Alter'].replace(2018, 0)
+    data['Altersklasse'] = 0
+    data['Altersklasse'][data['Alter'] >= 2017] = 0
+    data['Altersklasse'][data['Alter'] <= 30] = 1
+    data['Altersklasse'][(data['Alter'] >= 30) & (data['Alter'] <= 50)] = 2
+    data['Altersklasse'][(data['Alter'] >= 50) & (data['Alter'] <= 2017)] = 3
+    return data
