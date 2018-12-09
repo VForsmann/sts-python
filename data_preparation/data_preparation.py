@@ -1,6 +1,6 @@
 import pandas as pd
+
 import functions as fn
-import numpy as np
 
 raw_data = fn.load_data('../daten_robinson.csv')
 tmp_field = []
@@ -39,48 +39,14 @@ for c in data.columns:
     print("---- %s ---" % c)
     print(data[c].value_counts())
 
-# # f1 - set zero values to median
-# data['f1'] = fn.set_zero_to_median(raw_data, 'f1')
-#
-# # f2 - set zero values to median
-# data['f2'] = fn.set_zero_to_median(raw_data, 'f2')
-#
-# # f3_1 - f3_11 - set zero values to 8 --> not answered
-# tmp_field = ['f3_1', 'f3_2', 'f3_3', 'f3_4', 'f3_5', 'f3_6', 'f3_7', 'f3_8', 'f3_9', 'f3_10', 'f3_11', ]
-# data[tmp_field] = fn.question_cleaning(data, tmp_field, '0', 8)
-#
-#
-# # f4_1 - f4_11 - set zero values to 8 --> not answered
-# tmp_field = ['f4_1', 'f4_2', 'f4_3', 'f4_4', 'f4_5', 'f4_6', 'f4_7', 'f4_8', 'f4_9', 'f4_10', 'f4_11', 'f4_12', 'f4_13',
-#              'f4_14']
-# data[tmp_field] = fn.question_cleaning(data,tmp_field, '0', 8)
-#
-#
-# # f5_1 - f5_14 - set zero values to 8 --> not answered
-# tmp_field = ['f5_1', 'f5_2', 'f5_3', 'f5_4', 'f5_5', 'f5_6', 'f5_7', 'f5_8', 'f5_9', 'f5_10', 'f5_11']
-# data[tmp_field] = fn.question_cleaning(data, tmp_field, '0', 8)
-#
-# # f6 - set zero values to 8
-# data['f6_1'] = fn.set_field_value_to_new_value(raw_data, 'f6_1', 0, 8)
-# data['f6_2'] = fn.set_field_value_to_new_value(raw_data, 'f6_2', 0, 8)
-# data['f6_3'] = fn.set_field_value_to_new_value(raw_data, 'f6_3', 0, 8)
-# data['f6_4'] = fn.set_field_value_to_new_value(raw_data, 'f6_4', 0, 8)
-# data['f6_5'] = fn.set_field_value_to_new_value(raw_data, 'f6_5', 0, 8)
-# data['f6_6'] = fn.set_field_value_to_new_value(raw_data, 'f6_6', 0, 8)
-# data['f6_7'] = fn.set_field_value_to_new_value(raw_data, 'f6_7', 0, 8)
-# data['f6_8'] = fn.set_field_value_to_new_value(raw_data, 'f6_8', 0, 8)
-# data['f6_9'] = fn.set_field_value_to_new_value(raw_data, 'f6_9', 0, 8)
-#
-# # f7 - we do not use this question because of too large variations
-#
-# # f8 - set zero value to median
-# data['f8'] = fn.set_zero_to_median(raw_data, 'f8')
-#
-# # f9 - there is nothing to do here.
-#
-# # f10 - set zero values to 8
-# data['f10_1'] = fn.set_field_value_to_new_value(raw_data, 'f10_1', 0, 8)
-# data['f10_2'] = fn.set_field_value_to_new_value(raw_data, 'f10_2', 0, 8)
+data['f23_1'] = pd.to_numeric(data['f23_1'].astype('str').str.replace(',', '.'), errors='coerce')
+data['f23_2'] = pd.to_numeric(data['f23_2'].astype('str').str.replace(',', '.'), errors='coerce')
+data['f23_3'] = pd.to_numeric(data['f23_3'].astype('str').str.replace(',', '.'), errors='coerce')
+data['f23_4'] = pd.to_numeric(data['f23_4'].astype('str').str.replace(',', '.'), errors='coerce')
+dif_parent_first_child = data['Alter'][data['Alter'] > 0] - data['f23_1'][data['f23_1'] > 0]
+dif_parent_second_child = data['Alter'][data['Alter'] > 0] - data['f23_2'][data['f23_2'] > 0]
+dif_parent_third_child = data['Alter'][data['Alter'] > 0] - data['f23_3'][data['f23_3'] > 0]
+dif_parent_fourth_child = data['Alter'][data['Alter'] > 0] - data['f23_4'][data['f23_4'] > 0]
 
 # f11 - categorize
 # catalogue
@@ -104,4 +70,3 @@ data = [data, catalogue, internet, other]
 # f12 - sum
 logos = raw_data[['f12_1', 'f12_2', 'f12_3', 'f12_4', 'f12_5', 'f12_6', 'f12_7', 'f12_8', 'f12_9']].replace(' ', '0')
 sum_logos = fn.sum_characteristics(logos.values)
-print(sum_logos)
