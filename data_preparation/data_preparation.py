@@ -20,9 +20,20 @@ data['f26'] = data['f26'].replace('0', 7)
 data[['f11_7', 'f12_4', 'f15_8']] = data[['f11_7', 'f12_4', 'f15_8']].replace(' ', 0)
 
 # Ersetzt alle Leerstrings von allen Textfeldern mit 'nicht ausgefuellt'
-tmp = ['f3_txt_val', 'f3_txt', 'f4_txt_val', 'f4_txt', 'f5_txt_val', 'f5_txt',
-      'f6_txt', 'f7_txt', 'f11_txt', 'f14_txt', 'f15_txt_val', 'f15_txt', 'f17_Comment', 'f24', 'f25_1']
+tmp = ['f3_txt', 'f4_txt', 'f5_txt_val', 'f5_txt',
+      'f6_txt', 'f7_txt', 'f11_txt', 'f14_txt', 'f15_txt', 'f17_Comment', 'f24', 'f25_1']
 data[tmp] = data[tmp].replace(' ', 'nicht ausgefuellt')
+
+# Inkonsistenzen beheben I
+# Bei den Beurteilungsfragen die das Hinzufügen eines eigenen Begriffes erlauben, auf 0 = nicht ausgefuellt setzen, wenn nicht gesetzt
+tmp = ['f3_txt_val', 'f4_txt_val', 'f5_txt_val', 'f15_txt_val']
+data[tmp] = data[tmp].replace(' ', 0)
+
+# Inkonsistenzen beheben II
+data.loc[(data['f3_txt_val'] != 0) & (data['f3_txt'] == 'nicht ausgefuellt'), ['f3_txt_val']] = 0
+data.loc[(data['f4_txt_val'] != 0) & (data['f4_txt'] == 'nicht ausgefuellt'), ['f4_txt_val']] = 0
+data.loc[(data['f5_txt_val'] != 0) & (data['f5_txt'] == 'nicht ausgefuellt'), ['f5_txt_val']] = 0
+data.loc[(data['f15_txt_val'] != 0) & (data['f15_txt'] == 'nicht ausgefuellt'), ['f15_txt_val']] = 0
 
 # Kinderalter die einen leeren String enthalten werden auf 0 gesetzt
 data[['f23_1', 'f23_2', 'f23_3', 'f23_4']] = data[['f23_1', 'f23_2', 'f23_3', 'f23_4']].replace(' ', 0)
