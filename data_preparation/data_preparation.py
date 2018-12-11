@@ -25,7 +25,8 @@ tmp = ['f3_txt', 'f4_txt', 'f5_txt_val', 'f5_txt',
 data[tmp] = data[tmp].replace(' ', 'nicht ausgefuellt')
 
 # Inkonsistenzen beheben I
-# Bei den Beurteilungsfragen die das Hinzufügen eines eigenen Begriffes erlauben, auf 0 = nicht ausgefuellt setzen, wenn nicht gesetzt
+# Bei den Beurteilungsfragen die das Hinzufügen eines eigenen Begriffes erlauben,
+# auf 0 = nicht ausgefuellt setzen, wenn nicht gesetzt
 tmp = ['f3_txt_val', 'f4_txt_val', 'f5_txt_val', 'f15_txt_val']
 data[tmp] = data[tmp].replace(' ', 0)
 
@@ -107,6 +108,11 @@ income_statistics = data['f26'][data['f26'] < 7].describe()
 # create income classes
 data = fn.create_income_class(data)
 
+# Inkonsistenzen beheben III
+# Wenn ein Aufschlag angegeben wurde, die Frage ob man jedoch bereit wäre einen Aufschlag zu zahlen >= 5 ist
+# soll die Frage auf nicht beurteilbar gesetzt werden
+data['f18_2'] = pd.to_numeric(data['f18_2'], errors='coerce')
+data.loc[(data['f17'] > 0) & (data['f18_2'] >= 5), ['f18_2']] = 8
 
 # Gibt die Ausprägung von einer Spalte an
 for c in data.columns:
