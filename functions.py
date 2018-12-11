@@ -56,13 +56,14 @@ def question_cleaning(data, field, rep_value, rep_with):
 
 # creates new variable Altersklasse which is clustered
 def create_age(data):
-    data['Alter'] = 2018 - data['f22']
-    data['Alter'] = data['Alter'].replace(2018, 0)
-    data['Altersklasse'] = 0
-    data.loc[(data['Alter'] <= 30) & (data['Alter'] > 0), ['Altersklasse']] = 1
-    data.loc[(data['Alter'] >= 30) & (data['Alter'] <= 50), ['Altersklasse']] = 2
-    data.loc[(data['Alter'] >= 50) & (data['Alter'] <= 2017), ['Altersklasse']] = 3
+    data['age'] = 2018 - data['f22']
+    data['age'] = data['age'].replace(2018, 0)
+    data['age_category'] = 0
+    data.loc[(data['age'] <= 30) & (data['age'] > 0), ['age_category']] = 1
+    data.loc[(data['age'] >= 30) & (data['age'] <= 50), ['age_category']] = 2
+    data.loc[(data['age'] >= 50) & (data['age'] <= 2017), ['age_category']] = 3
     return data
+
 
 # creates new variable income_class which is clustered
 def create_income_class(data):
@@ -72,11 +73,13 @@ def create_income_class(data):
     data.loc[(data['f26'] == 5) | (data['f26'] == 6), ['income_class']] = 3
     return data
 
+
 def difference(data):
     data['difference'] = 99
     data['f18_2'] = pd.to_numeric(data['f18_2'], errors='coerce')
     data['f18_2'] = pd.to_numeric(data['f18_9'], errors='coerce')
-    data['difference'] = data['f18_2'](([data['f18_2'].isin([1]) | data['f18_2'].isin([2]) | data['f18_2'].isin([6])| data['f18_2'].isin([7])]) & (data['f18_9'][data['f18_9'].isin([1]) | data['f18_9'].isin([2]) | data['f18_9'].isin([6]) | data['f18_9'].isin([7]))]))
+    data_difference = data['f18_2', 'f18_9'][data['f18_2'].isin([1, 2, 6, 7]) & data['f18_9'].isin([1, 2, 6, 7])]
+    data['difference_f18_2_f18_9'] = data_difference['f18_2'] - data_difference['f18_9']
     return data
 
 

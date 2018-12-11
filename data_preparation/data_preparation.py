@@ -85,10 +85,10 @@ data['f23_1'] = pd.to_numeric(data['f23_1'].astype('str').str.replace(',', '.'),
 data['f23_2'] = pd.to_numeric(data['f23_2'].astype('str').str.replace(',', '.'), errors='coerce')
 data['f23_3'] = pd.to_numeric(data['f23_3'].astype('str').str.replace(',', '.'), errors='coerce')
 data['f23_4'] = pd.to_numeric(data['f23_4'].astype('str').str.replace(',', '.'), errors='coerce')
-dif_parent_first_child = data['Alter'][data['Alter'] > 0] - data['f23_1'][data['f23_1'] > 0]
-dif_parent_second_child = data['Alter'][data['Alter'] > 0] - data['f23_2'][data['f23_2'] > 0]
-dif_parent_third_child = data['Alter'][data['Alter'] > 0] - data['f23_3'][data['f23_3'] > 0]
-dif_parent_fourth_child = data['Alter'][data['Alter'] > 0] - data['f23_4'][data['f23_4'] > 0]
+dif_parent_first_child = data['age'][data['age'] > 0] - data['f23_1'][data['f23_1'] > 0]
+dif_parent_second_child = data['age'][data['age'] > 0] - data['f23_2'][data['f23_2'] > 0]
+dif_parent_third_child = data['age'][data['age'] > 0] - data['f23_3'][data['f23_3'] > 0]
+dif_parent_fourth_child = data['age'][data['age'] > 0] - data['f23_4'][data['f23_4'] > 0]
 
 
 # f25 cleaning up PLZ
