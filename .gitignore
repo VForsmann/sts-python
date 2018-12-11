@@ -2,3 +2,4 @@
 __pycache__
 graphs/histograms/*.png
 *.html
+*/*.csv

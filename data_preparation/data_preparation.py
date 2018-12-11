@@ -118,3 +118,5 @@ data.loc[(data['f17'] > 0) & (data['f18_2'] >= 5), ['f18_2']] = 8
 for c in data.columns:
     print("---- %s ---" % c)
     print(data[c].value_counts())
+
+data.to_csv('data_preparation.csv', sep=';')
