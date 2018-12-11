@@ -71,3 +71,13 @@ def create_income_class(data):
     data.loc[(data['f26'] == 3) | (data['f26'] == 4), ['income_class']] = 2
     data.loc[(data['f26'] == 5) | (data['f26'] == 6), ['income_class']] = 3
     return data
+
+def difference(data):
+    data['difference'] = 99
+    data['f18_2'] = pd.to_numeric(data['f18_2'], errors='coerce')
+    data['f18_2'] = pd.to_numeric(data['f18_9'], errors='coerce')
+    data['difference'] = data['f18_2'](([data['f18_2'].isin([1]) | data['f18_2'].isin([2]) | data['f18_2'].isin([6])| data['f18_2'].isin([7])]) & (data['f18_9'][data['f18_9'].isin([1]) | data['f18_9'].isin([2]) | data['f18_9'].isin([6]) | data['f18_9'].isin([7]))]))
+    return data
+
+
+#data['f26'] = pd.to_numeric(data['f26'].astype('str').str.replace(',', '.'), errors='coerce')
