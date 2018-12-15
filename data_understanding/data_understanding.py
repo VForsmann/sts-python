@@ -1,6 +1,5 @@
 import pandas as pd
 import functions as fn
-import numpy as np
 import matplotlib.pyplot as plt
 
 data = fn.load_data('../daten_robinson.csv')
@@ -32,12 +31,48 @@ plt.pie(sizes,              # data
 plt.axis('equal')
 plt.show()
 
-
 # Gibt die Ausprägung von einer Spalte an
-for c in data.columns:
-    print("---- %s ---" % c)
-    print(data[c].value_counts())
+#for c in data.columns:
+    #print("---- %s ---" % c)
+   # print(data[c].value_counts())
 
 # ab Frage 11 sind alle Werte numerischen Werte Strings, diese werden im data_preparation behandelt
-print(data.describe())
+#print(data.describe())
+
+
+# matplotlib style
+plt.style.use('seaborn-bright')
+
+data['f26'] = pd.to_numeric(data['f26'].astype('str'), errors='coerce')
+
+count1 = data['f26'][data['f26'] == 1].value_counts().sum()
+percentage1 = count1/219*100
+count2 = data['f26'][data['f26'] == 2].value_counts().sum()
+percentage2 = count2/219*100
+count3 = data['f26'][data['f26'] == 3].value_counts().sum()
+percentage3 = count3/219*100
+count4 = data['f26'][data['f26'] == 4].value_counts().sum()
+percentage4 = count4/219*100
+count5 = data['f26'][data['f26'] == 5].value_counts().sum()
+percentage5 = count5/219*100
+count6 = data['f26'][data['f26'] == 6].value_counts().sum()
+percentage6 = count6/219*100
+count7 = data['f26'][data['f26'] == 7].value_counts().sum()
+percentage7 = count1/219*100
+
+# data to plot
+labels = 'bis unter 1.500€', 'bis unter 2.000€', 'bis unter 3.000€', 'bis unter 4.000€', 'bis unter 5.000€', '5.000€ oder mehr', 'keine Angabe'
+sizes = [count1, count2, count3, count4, count5, count6, count7]
+colors = ['green', 'black', 'lightblue', 'red', 'yellow', 'purple', 'gray']
+
+# plot
+plt.pie(sizes,              # data
+        labels=labels,      # slice labels
+        colors=colors,      # array of clors
+        autopct='%1.1f%%',  # print the values inside the wedges
+        shadow=True,        # enable shadow
+        startangle=140)     # startin angle
+
+plt.axis('equal')
+plt.show()
 
