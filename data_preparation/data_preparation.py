@@ -1,5 +1,4 @@
 import pandas as pd
-
 import functions as fn
 
 raw_data = fn.load_data('../daten_robinson.csv')
