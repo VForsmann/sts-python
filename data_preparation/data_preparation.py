@@ -101,7 +101,6 @@ data.loc[(data['f25_1'].isin(['RUS'])) & ((data['f25_2'] <= 100000) | (data['f25
 ger_plz = data['f25_2'][(data['f25_1'].isin(['D']))] / 10000
 ger_plz_sum = ger_plz.astype(int).value_counts()
 
-
 # f26 Get Statistics of income
 data['f26'] = pd.to_numeric(data['f26'].astype('str').str.replace(',', '.'), errors='coerce')
 income_statistics = data['f26'][data['f26'] < 7].describe()
@@ -143,3 +142,6 @@ countThirdChild = data['f23_3'][data['f23_3'] > 0].value_counts().sum()
 countFourthChild = data['f23_4'][data['f23_4'] > 0].value_counts().sum()
 sum =(countFirstChild + countSecondChild + countThirdChild + countFourthChild)/218
 print(sum)
+
+
+
