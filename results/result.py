@@ -39,3 +39,16 @@ prep_f17 = data['f17'][data['f17'] != 0]
 prep_f17 = prep_f17.replace(-99, 0)
 print(prep_f17.describe())
 
+# 5. Assignment --> Clustering
+
+# 6. Assignment
+
+# 7. Assignment
+print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 7. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+# TODO mögliche Korrelation zwischen den bekannten Siegeln (f12) und denen den am meisten vertraut wird (f13)
+print('Platz 1:')
+print(fn.count_values(data, 'f13_1'))
+print('Platz 2:')
+print(fn.count_values(data, 'f13_2'))
+print('Platz 3:')
+print(fn.count_values(data, 'f13_3'))
