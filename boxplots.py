@@ -18,4 +18,4 @@ for col in raw_data.columns:
         data.append(go.Box(y=raw_data[col], name=col, showlegend=False))
 # IPython notebook
 # py.iplot(data, filename='pandas-box-plot')
-plotly.offline.plot(data, filename='pandas-box-plot.html')
+plotly.offline.plot(data, filename='./graphs/html/htmlGraphs/pandas-box-plot.html')
