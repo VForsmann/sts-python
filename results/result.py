@@ -45,7 +45,9 @@ print(prep_f17.describe())
 
 # 7. Assignment
 print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 7. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
-# TODO mögliche Korrelation zwischen den bekannten Siegeln (f12) und denen den am meisten vertraut wird (f13)
+logos = data[['f12_1', 'f12_2', 'f12_3', 'f12_4', 'f12_5', 'f12_6', 'f12_7', 'f12_8', 'f12_9']]
+print('So oft wurden die einzelnen Bio-Siegel angekreuzt')
+print(fn.sum_characteristics(logos.values))
 print('Platz 1:')
 print(fn.count_values(data, 'f13_1'))
 print('Platz 2:')
