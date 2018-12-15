@@ -41,7 +41,10 @@ def reg_for_prep_data(x, y):
     print(print_model)
 
 
-foo = ['f4_13', 'f8', 'f9', 'f10_1', 'f10_2', 'f15_8', 'f16_3', 'f16_8', 'f18_2']
-bar = 'f18_7'
-reg_for_prep_data(foo, bar)
-
+# regression for assigment 1
+food = ['f4_13', 'f8', 'f9', 'f10_1', 'f10_2', 'f15_8', 'f16_3', 'f16_8', 'f18_2']
+well_being = 'f18_7'
+# reg_for_prep_data(food, well_being)
+sport = ['f3_3', 'f3_9']
+well_being = 'f3_2'
+reg_for_prep_data(sport, well_being)
