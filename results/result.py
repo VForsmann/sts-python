@@ -27,3 +27,15 @@ print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 3. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx'
 # TODO hier noch ein plot erstellen, der pro frage den Mittelwert darstellt und ggf. irgendwie noch die std
 bio_elements = ['f15_1', 'f15_2', 'f15_3', 'f15_4', 'f15_5', 'f15_6', 'f15_7', 'f15_8', 'f15_9', 'f15_10', 'f15_11', 'f15_12', 'f15_13', 'f15_14', 'f15_15', 'f15_16']
 print(data[bio_elements][(data[bio_elements] < 8) & (data[bio_elements] > 0)].describe())
+
+# 4. Assignment
+print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 4. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+# TODO evtl. noch weiteres prep
+print('Leute, die bereit sind für Bio mehr zu zahlen, würden im Schnitt x mehr zahlen:')
+print(data['f17'][(data['f17'] > 0)].describe())
+
+print('Leute, die die Frage beantwortet haben:')
+prep_f17 = data['f17'][data['f17'] != 0]
+prep_f17 = prep_f17.replace(-99, 0)
+print(prep_f17.describe())
+
