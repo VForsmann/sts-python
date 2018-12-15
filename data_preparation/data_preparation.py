@@ -1,5 +1,7 @@
 import pandas as pd
 import functions as fn
+import numpy as np
+import matplotlib.pyplot as plt
 
 raw_data = fn.load_data('../daten_robinson.csv')
 pd.set_option('display.max_rows', 500)
@@ -84,11 +86,10 @@ data['f23_1'] = pd.to_numeric(data['f23_1'].astype('str').str.replace(',', '.'),
 data['f23_2'] = pd.to_numeric(data['f23_2'].astype('str').str.replace(',', '.'), errors='coerce')
 data['f23_3'] = pd.to_numeric(data['f23_3'].astype('str').str.replace(',', '.'), errors='coerce')
 data['f23_4'] = pd.to_numeric(data['f23_4'].astype('str').str.replace(',', '.'), errors='coerce')
-dif_parent_first_child = data['age'][data['age'] > 0] - data['f23_1'][data['f23_1'] > 0]
-dif_parent_second_child = data['age'][data['age'] > 0] - data['f23_2'][data['f23_2'] > 0]
-dif_parent_third_child = data['age'][data['age'] > 0] - data['f23_3'][data['f23_3'] > 0]
-dif_parent_fourth_child = data['age'][data['age'] > 0] - data['f23_4'][data['f23_4'] > 0]
-
+data['dif_parent_first_child'] = data['age'][data['age'] > 0] - data['f23_1'][data['f23_1'] > 0]
+data['dif_parent_second_child'] = data['age'][data['age'] > 0] - data['f23_2'][data['f23_2'] > 0]
+data['dif_parent_third_child'] = data['age'][data['age'] > 0] - data['f23_3'][data['f23_3'] > 0]
+data['dif_parent_fourth_child'] = data['age'][data['age'] > 0] - data['f23_4'][data['f23_4'] > 0]
 
 # f25 cleaning up PLZ
 data['f25_2'] = pd.to_numeric(data['f25_2'])
@@ -99,7 +100,6 @@ data.loc[(data['f25_1'].isin(['RUS'])) & ((data['f25_2'] <= 100000) | (data['f25
 
 ger_plz = data['f25_2'][(data['f25_1'].isin(['D']))] / 10000
 ger_plz_sum = ger_plz.astype(int).value_counts()
-
 
 # f26 Get Statistics of income
 data['f26'] = pd.to_numeric(data['f26'].astype('str').str.replace(',', '.'), errors='coerce')
@@ -119,3 +119,29 @@ for c in data.columns:
     print(data[c].value_counts())
 
 data.to_csv('data_preparation.csv', sep=';')
+
+print(data['f23_1'])
+
+data['f23_3'] = data['f23_3'].replace(np.NaN, 0)
+data['dif_parent_second_child'] = data['dif_parent_second_child'].replace(np.NaN, 0)
+data['dif_parent_third_child'] = data['dif_parent_third_child'].replace(np.NaN, 0)
+data['dif_parent_fourth_child'] = data['dif_parent_fourth_child'].replace(np.NaN, 0)
+
+# Berechnung durchschnittsalter der Kinder im Robinson Club
+first = data['f23_1'].sum()/data['f23_1'][data['f23_1'] > 0].value_counts().sum()
+second = data['f23_2'].sum()/data['f23_2'][data['f23_2'] > 0].value_counts().sum()
+third = data['f23_3'].sum()/data['f23_3'][data['f23_3'] > 0].value_counts().sum()
+fourth = data['f23_4'].sum()/data['f23_4'][data['f23_4'] > 0].value_counts().sum()
+mittelwertAge = (first + second + third + fourth)/4
+print(mittelwertAge)
+
+# Berechnung durchschnittliche Anzahl an Kindern je Elternteil
+countFirstChild = data['f23_1'][data['f23_1'] > 0].value_counts().sum()
+countSecondChild = data['f23_2'][data['f23_2'] > 0].value_counts().sum()
+countThirdChild = data['f23_3'][data['f23_3'] > 0].value_counts().sum()
+countFourthChild = data['f23_4'][data['f23_4'] > 0].value_counts().sum()
+sum =(countFirstChild + countSecondChild + countThirdChild + countFourthChild)/218
+print(sum)
+
+
+
