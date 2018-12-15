@@ -143,5 +143,5 @@ countFourthChild = data['f23_4'][data['f23_4'] > 0].value_counts().sum()
 sum =(countFirstChild + countSecondChild + countThirdChild + countFourthChild)/218
 print(sum)
 
-
+print(data['f4_13'].describe())
 
