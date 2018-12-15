@@ -140,8 +140,6 @@ countFirstChild = data['f23_1'][data['f23_1'] > 0].value_counts().sum()
 countSecondChild = data['f23_2'][data['f23_2'] > 0].value_counts().sum()
 countThirdChild = data['f23_3'][data['f23_3'] > 0].value_counts().sum()
 countFourthChild = data['f23_4'][data['f23_4'] > 0].value_counts().sum()
-sum =(countFirstChild + countSecondChild + countThirdChild + countFourthChild)/218
+sum = (countFirstChild + countSecondChild + countThirdChild + countFourthChild)/218
 print(sum)
-
-print(data['f4_13'].describe())
 
