@@ -1,7 +1,7 @@
 import pandas as pd
 import functions as fn
-import matplotlib.pyplot as plt
 import plotly as py
+import plotly.graph_objs as go
 
 data = fn.load_data('../daten_robinson.csv')
 pd.set_option('display.max_rows', 500)
@@ -96,3 +96,26 @@ fig = {
 }
 
 py.offline.plot(fig, filename='../graphs/html/htmlGraphs/tortendiagramme.html')
+
+count1 = data['f26'][data['f26'] == 1].value_counts().sum()
+
+countZero = data['f2'][data['f2'] == 0].value_counts().sum()
+countAlone = data['f2'][data['f2'] == 1].value_counts().sum()
+countFriend = data['f2'][data['f2'] == 2].value_counts().sum()
+countFamily = data['f2'][data['f2'] == 3].value_counts().sum()
+
+trace0 = go.Bar(
+    x=['keine Angabe', 'allein', 'mit Ehepartner / Freund/in', 'mit Familie'],
+    y=[countZero, countAlone, countFriend, countFamily],
+    marker=dict(
+        color=['rgba(165, 42, 42, 0.4)', 'rgba(165, 42, 42, 0.7)',
+               'rgba(165, 42, 42, 0.6)', 'rgba(165, 42, 42, 1)']),
+)
+
+data = [trace0]
+layout = go.Layout(
+    title='Reisebegleitung',
+)
+
+fig = go.Figure(data=data, layout=layout)
+py.offline.plot(fig, filename='../graphs/html/htmlGraphs/balkendiagramm.html')
