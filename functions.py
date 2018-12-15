@@ -81,6 +81,3 @@ def difference(data):
     data_difference = data['f18_2', 'f18_9'][data['f18_2'].isin([1, 2, 6, 7]) & data['f18_9'].isin([1, 2, 6, 7])]
     data['difference_f18_2_f18_9'] = data_difference['f18_2'] - data_difference['f18_9']
     return data
-
-
-#data['f26'] = pd.to_numeric(data['f26'].astype('str').str.replace(',', '.'), errors='coerce')
