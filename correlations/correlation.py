@@ -16,8 +16,8 @@ def corr_for_prep_data(data, filename):
         .dropna(axis='columns', how='all')
 
     # creating html correlation table
-    filtered_corr.to_html('../graphs/html/htmlGraphs/' + filename + 'corr_table.html')
-    html = open('../graphs/html/htmlGraphs/' + filename + 'corr_table.html', 'a')
+    filtered_corr.to_html('../graphs/html/htmlGraphs/' + filename + '_corr_table.html')
+    html = open('../graphs/html/htmlGraphs/' + filename + '_corr_table.html', 'a')
     html.write("""<script>
     let tds = document.getElementsByTagName("td");
     
