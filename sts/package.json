@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm-run-all --parallel graphs serve",
+    "start": "npm-run-all --parallel serve graphs",
     "serve": "ng serve",
     "graphs": "cd ../graphs/html && node app.js",
     "build": "ng build",

@@ -7,6 +7,8 @@ import { Component, OnInit, Input, SimpleChanges,} from "@angular/core";
 })
 export class GraphComponent implements OnInit {
     @Input() data;
+    @Input() height;
+    @Input() width;
     url: string = "http://localhost:3000/";
 
     constructor() {
