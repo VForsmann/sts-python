@@ -1,3 +1,12 @@
-<app-graph [data]="'pandas-box-plot.html'"></app-graph>
-<app-graph [data]="'tortendiagramme.html'"></app-graph>
-<app-graph [data]="'balkendiagramm.html'"></app-graph>
+<!-- side navigation -->
+<div class="sidenav">
+  <a routerLink="/" fragment="introduction"> > Einführung</a>
+  <a routerLink="/" fragment="data_understanding"> > Data Understanding</a>
+  <a routerLink="/" fragment="back_up"> > Back-Up</a>
+</div>
+
+<!-- content components-->
+<div class="main">
+  <app-introduction></app-introduction>
+  <app-data-understanding></app-data-understanding>
+</div>
