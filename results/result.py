@@ -1,6 +1,8 @@
 import correlations.regression as regr
 import functions as fn
-
+import statsmodels.stats.weightstats as tests
+import scipy.stats as stat
+import numpy as np
 data = fn.load_data('../data_preparation/data_preparation.csv')
 
 
@@ -30,7 +32,7 @@ print(data[bio_elements][(data[bio_elements] < 8) & (data[bio_elements] > 0)].de
 
 # 4. Assignment
 print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 4. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
-# TODO evtl. noch weiteres prep; hier noch ein plot erstellen, der pro frage den Mittelwert darstellt und
+# TODO  0 reinnehmen und -99 raus. evtl. noch weiteres prep; hier noch ein plot erstellen, der pro frage den Mittelwert darstellt und
 #  ggf. irgendwie noch die std
 print('Leute, die bereit sind für Bio mehr zu zahlen, würden im Schnitt x mehr zahlen:')
 print(data['f17'][(data['f17'] > 0)].describe())
@@ -60,3 +62,15 @@ print('Platz 2:')
 print(fn.count_values(data, 'f13_2'))
 print('Platz 3:')
 print(fn.count_values(data, 'f13_3'))
+
+
+# Kolgomorov Smirnof Test
+# x = np.linspace(data['f9'])
+print(stat.kstest(data['f9'], 'norm'))
+# 1. Hypothesentest f9
+without_child = data['f9'][(data['f2'] == 1) | (data['f2'] == 2)]
+with_child = data['f9'][data['f2'] == 3]
+print(tests.ztest(without_child, with_child))
+without_child = data['f9'][(data['f23_1'] > 0) | (data['f23_2'] > 0) | (data['f23_3'] > 0) | (data['f23_4'] > 0)]
+with_child = data['f9'][(data['f23_1'] == 0) & (data['f23_2'] == 0) & (data['f23_3'] == 0) & (data['f23_4'] == 0)]
+print(tests.ztest(without_child, with_child))
