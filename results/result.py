@@ -1,17 +1,21 @@
+import correlations.correlation as corr
 import correlations.regression as regr
 import functions as fn
 import statsmodels.stats.weightstats as tests
 import scipy.stats as stat
-import numpy as np
 data = fn.load_data('../data_preparation/data_preparation.csv')
 
 
 # 1. Assignment
 # regression for assigment 1
 print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 1. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
-# TODO hier noch die korrelationen einfügen, aber erst, wenn korrelation eine eigene funktion ist
 food = ['f4_13', 'f8', 'f9', 'f10_1', 'f10_2', 'f15_8', 'f16_3', 'f16_8', 'f18_2']
 well_being = 'f18_7'
+food_and_well_being = ['f4_13', 'f8', 'f9', 'f10_1', 'f10_2', 'f15_8', 'f16_3', 'f16_8', 'f18_2', 'f18_7']
+print('---- correlation ----')
+first_corr = corr.corr_for_prep_data(data[food_and_well_being], filename='first')
+print(first_corr)
+corr.corr_heatmap(first_corr, filename='first')
 print('---- well being - food regression ----')
 regr.reg_for_prep_data(food, well_being, data)
 sport = ['f3_3', 'f3_9']
@@ -21,8 +25,10 @@ regr.reg_for_prep_data(sport, well_being, data)
 
 # 2. Assignment
 print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 2. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
-# TODO hier noch die korrelationen einfügen, aber erst, wenn korrelation eine eigene funktion ist
 print(data['f4_13'][(data['f4_13'] < 8) & (data['f4_13'] > 0)].describe())
+sec_corr = corr.corr_for_prep_data(data[['f4_13', 'f5_7', 'f5_8', 'f5_10', 'f8', 'f9', 'f10_1', 'f10_2', 'f18_2', 'f18_7']], filename='second')
+print(sec_corr)
+corr.corr_heatmap(sec_corr, filename='second')
 
 # 3. Assignment
 print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 3. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
@@ -41,8 +47,7 @@ prep_f17 = data['f17'][data['f17'] != 0]
 prep_f17 = prep_f17.replace(-99, 0)
 print(prep_f17.describe())
 
-# 5. Assignment
-print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 5. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+# 5. Assignment --> cluster analysis
 
 # 6. Assignment
 print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 6. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
@@ -64,6 +69,7 @@ print('Platz 3:')
 print(fn.count_values(data, 'f13_3'))
 
 
+
 # Kolgomorov Smirnof Test
 # x = np.linspace(data['f9'])
 print(stat.kstest(data['f9'], 'norm'))
@@ -74,3 +80,10 @@ print(tests.ztest(without_child, with_child))
 without_child = data['f9'][(data['f23_1'] > 0) | (data['f23_2'] > 0) | (data['f23_3'] > 0) | (data['f23_4'] > 0)]
 with_child = data['f9'][(data['f23_1'] == 0) & (data['f23_2'] == 0) & (data['f23_3'] == 0) & (data['f23_4'] == 0)]
 print(tests.ztest(without_child, with_child))
+
+# Hypothesentest 2: Frauen bevorzugen Bio-Nahrung mehr als Männer ?
+print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - Hypothesentest 2 - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+print('Frauen bevorzugen Bio-Nahrung mehr als Männer ?')
+male = data['f9'][(data['f21'] == 1)]
+female = data['f9'][(data['f21'] == 2)]
+print(tests.ztest(female, male))

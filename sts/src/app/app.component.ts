@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation, ViewChild, ElementRef, PipeTransform, Pipe, OnInit } from '@angular/core';
 import { DomSanitizer } from "@angular/platform-browser";
+import { ActivatedRoute } from '@angular/router';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -13,5 +14,15 @@ export class SafePipe implements PipeTransform {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+
+  constructor(private route: ActivatedRoute){}
+
+  ngOnInit() {
+  this.route.fragment.subscribe((fragment: string) => {
+    if (fragment && document.getElementById(fragment) != null) {
+      document.getElementById(fragment).scrollIntoView({ behavior: "smooth" , block: "start"});
+    }
+  });
+}
 }
