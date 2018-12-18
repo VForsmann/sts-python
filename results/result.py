@@ -101,3 +101,6 @@ print(tests.ztest(alone_friends, family))
 
 # 4. Hypothesentest:
 print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - Hypothesentest 4 - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+biobuyer = data['f15_14'][(data['f8'] == 1) | (data['f8'] == 2) | (data['f8'] == 3)]
+nobiobuyer = data['f15_14'][(data['f8'] == 4) | (data['f8'] == 5) | (data['f8'] == 6)]
+print(tests.ztest(biobuyer, nobiobuyer))
