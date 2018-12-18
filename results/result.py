@@ -1,6 +1,7 @@
 import correlations.correlation as corr
 import correlations.regression as regr
 import functions as fn
+import statsmodels.stats.weightstats as tests
 
 data = fn.load_data('../data_preparation/data_preparation.csv')
 
@@ -46,8 +47,7 @@ prep_f17 = data['f17'][data['f17'] != 0]
 prep_f17 = prep_f17.replace(-99, 0)
 print(prep_f17.describe())
 
-# 5. Assignment
-print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 5. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+# 5. Assignment --> cluster analysis
 
 # 6. Assignment
 print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 6. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
@@ -67,3 +67,11 @@ print('Platz 2:')
 print(fn.count_values(data, 'f13_2'))
 print('Platz 3:')
 print(fn.count_values(data, 'f13_3'))
+
+
+# Hypothesentest 2: Frauen bevorzugen Bio-Nahrung mehr als Männer ?
+print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - Hypothesentest 2 - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+print('Frauen bevorzugen Bio-Nahrung mehr als Männer ?')
+male = data['f9'][(data['f21'] == 1)]
+female = data['f9'][(data['f21'] == 2)]
+print(tests.ztest(female, male))
