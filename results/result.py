@@ -89,3 +89,15 @@ print('Frauen bevorzugen Bio-Nahrung mehr als Männer ?')
 male = data['f9'][(data['f21'] == 1)]
 female = data['f9'][(data['f21'] == 2)]
 print(tests.ztest(female, male))
+
+# 3. Hypothesentest: Familien legen mehr Wert auf touristischen Qualitätssiegel
+# als Alleinreisende oder Ehepartner / Freundin ?
+print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - Hypothesentest 3 - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+print('Familien legen mehr Wert auf touristischen Qualitätssiegel als Alleinreisende oder Ehepartner / Freundin?')
+alone_friends = data['f18_1'][(data['f2'] == 1) | (data['f2'] == 2)]
+family = data['f18_1'][(data['f2'] == 3)]
+print(tests.ztest(alone_friends, family))
+
+
+# 4. Hypothesentest:
+print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - Hypothesentest 4 - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
