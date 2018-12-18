@@ -69,11 +69,13 @@ print('Platz 3:')
 print(fn.count_values(data, 'f13_3'))
 
 
-
 # Kolgomorov Smirnof Test
 # x = np.linspace(data['f9'])
 print(stat.kstest(data['f9'], 'norm'))
-# 1. Hypothesentest f9
+
+# 1. Hypothesentest: Familien mit Kinder bevorzugen Bio-Nahrung ?
+print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - Hypothesentest 1 - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+print('Familien mit Kinder bevorzugen Bio-Nahrung?')
 without_child = data['f9'][(data['f2'] == 1) | (data['f2'] == 2)]
 with_child = data['f9'][data['f2'] == 3]
 print(tests.ztest(without_child, with_child))
@@ -81,7 +83,7 @@ without_child = data['f9'][(data['f23_1'] > 0) | (data['f23_2'] > 0) | (data['f2
 with_child = data['f9'][(data['f23_1'] == 0) & (data['f23_2'] == 0) & (data['f23_3'] == 0) & (data['f23_4'] == 0)]
 print(tests.ztest(without_child, with_child))
 
-# Hypothesentest 2: Frauen bevorzugen Bio-Nahrung mehr als Männer ?
+# 2. Hypothesentest:  Frauen bevorzugen Bio-Nahrung mehr als Männer ?
 print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - Hypothesentest 2 - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
 print('Frauen bevorzugen Bio-Nahrung mehr als Männer ?')
 male = data['f9'][(data['f21'] == 1)]
