@@ -1,9 +1,10 @@
 <!-- side navigation -->
 <div class="sidenav">
-  <a *ngFor="let navPoint of underpoints; index as i" routerLink="/" fragment="{{navPoint.innerText}}" [style.font-size]="navPoint.large ? 'xx-large' : 'x-large'" [style.padding-left]="navPoint.large ? '10px' : '40px'"><i *ngIf="this.actualElem === navPoint" class="fa fa-arrow-circle-right"></i>{{navPoint.innerText}}</a>
+  <a *ngFor="let navPoint of underpoints; index as i"  (click)="scroll(navPoint)" [style.font-size]="navPoint.large ? 'xx-large' : 'x-large'" [style.padding-left]="navPoint.large ? '10px' : '40px'"><i *ngIf="this.actualElem === navPoint" class="fa fa-arrow-circle-right"></i>{{navPoint.innerText}}</a>
 </div>
 
 <!--<a routerLink="/" fragment="introduction"><i class="fa fa-arrow-circle-right"></i>Einführung</a>-->
 <!--<a routerLink="/" fragment="data_understanding"><i class="fa fa-arrow-circle-right"></i>Data Understanding</a>-->
 <!--<a routerLink="/" fragment="back_up"><i class="fa fa-arrow-circle-right"></i>Back-Up</a>-->
 <!--<a routerLink="/" fragment=""-->
+<!--routerLink="/" fragment="{{navPoint.innerText}}"-->

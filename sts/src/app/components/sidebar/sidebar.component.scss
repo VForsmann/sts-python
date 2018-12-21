@@ -21,10 +21,11 @@
 }
 
 .sidenav a{
+  cursor: pointer;
   &:hover{
     color: #BDBDBD;
   }
-  &.active{
+  &:active{
     color: #BDBDBD;
   }
 }
