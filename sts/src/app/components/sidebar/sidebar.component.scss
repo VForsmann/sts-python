@@ -1,0 +1,35 @@
+/* SIDEBAR */
+.sidenav {
+  height: 100%;
+  width: 350px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #2E2E2E;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* navigation menu*/
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #E6E6E6;
+  display: block;
+}
+
+.sidenav a{
+  cursor: pointer;
+  &:hover{
+    color: #BDBDBD;
+  }
+  &:active{
+    color: #BDBDBD;
+  }
+}
+
+i{
+  margin-right: 15px;
+}

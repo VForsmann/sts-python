@@ -1,11 +1,12 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent, SafePipe} from './app.component';
-import {GraphComponent} from './pythonGraphs/boxplot/graph.component';
+import {GraphComponent} from './components/graph/graph.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {IntroductionComponent} from './components/introduction/introduction.component';
 import {DataUnderstandingComponent} from './components/data-understanding/data-understanding.component';
 import {RouterModule} from "@angular/router";
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
     declarations: [
@@ -13,7 +14,8 @@ import {RouterModule} from "@angular/router";
         GraphComponent,
         SafePipe,
         IntroductionComponent,
-        DataUnderstandingComponent
+        DataUnderstandingComponent,
+        SidebarComponent
     ],
     imports: [
         BrowserModule,
