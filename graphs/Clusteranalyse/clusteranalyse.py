@@ -53,9 +53,11 @@ print(silhouette_score(factor_df, kmeans.labels_))
 dendro = ff.create_dendrogram(factor_df)
 dendro['layout'].update({'width': 800, 'height': 500})
 plotly.offline.plot(dendro, filename='../html/htmlGraphs/dendrogram.html')
-for c in raw_data.columns:
-  print("---- %s ---" % c)
-  print(raw_data[c][raw_data['cluster']==2].value_counts())
+
+# Funktion zum erklaeren der Cluster
+# for c in raw_data.columns:
+#   print("---- %s ---" % c)
+#   print(raw_data[c][raw_data['cluster']==2].value_counts())
 
 # Cluster 0: Kinderlose großverdiener, Genießer, steigert nicht das wohlbefinden, würden nicht mehr zahlen, bevorzugen
 # kein bio vor konventioenneln, kaufen eher kein bio, nicht wichtig (Öko essen), Ehepartner ausflug
