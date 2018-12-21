@@ -19,4 +19,4 @@ Wenn ein Element Teil der Sidebar werden soll (Hierzu am besten Textelemente wie
 
 sorgt für einen automatischen Eintrag in der Sidebar.
 
-Navigieren per klick ist noch nicht zu 100% Einsatzfähig.
+Ein Eintrag in der Sidebar ist ebenfalls `smooth-scrollable`
