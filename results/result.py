@@ -3,7 +3,7 @@ import correlations.regression as regr
 import functions as fn
 import statsmodels.stats.weightstats as tests
 import scipy.stats as stat
-import graphs.Clusteranalyse.clusteranalyse as cluster_result
+import clusteranalyse.clusteranalyse as cluster_result
 
 def do(filename):
     data = fn.load_data(filename)
@@ -72,12 +72,11 @@ def do(filename):
     print(fn.count_values(data, 'f13_3'))
 
 
-    # Kolgomorov Smirnof Test
-    # x = np.linspace(data['f9'])
-    print(stat.kstest(data['f9'], 'norm'))
-
     # 1. Hypothesentest: Familien mit Kinder bevorzugen Bio-Nahrung ?
     print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - Hypothesentest 1 - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    # Testen auf Normalverteilung
+    print(stat.kstest(data['f9'], 'norm'))
+
     print('Familien mit Kinder bevorzugen Bio-Nahrung?')
     without_child = data['f9'][(data['f2'] == 1) | (data['f2'] == 2)]
     with_child = data['f9'][data['f2'] == 3]
@@ -88,6 +87,8 @@ def do(filename):
 
     # 2. Hypothesentest:  Frauen bevorzugen Bio-Nahrung mehr als Männer ?
     print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - Hypothesentest 2 - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    # Testen auf Normalverteilung
+    print(stat.kstest(data['f9'], 'norm'))
     print('Frauen bevorzugen Bio-Nahrung mehr als Männer ?')
     male = data['f9'][(data['f21'] == 1)]
     female = data['f9'][(data['f21'] == 2)]
@@ -96,20 +97,26 @@ def do(filename):
     # 3. Hypothesentest: Familien legen mehr Wert auf touristischen Qualitätssiegel
     # als Alleinreisende oder Ehepartner / Freundin ?
     print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - Hypothesentest 3 - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    # Testen auf Normalverteilung
+    print(stat.kstest(data['f18_1'], 'norm'))
     print('Familien legen mehr Wert auf touristischen Qualitätssiegel als Alleinreisende oder Ehepartner / Freundin?')
     alone_friends = data['f18_1'][(data['f2'] == 1) | (data['f2'] == 2)]
     family = data['f18_1'][(data['f2'] == 3)]
     print(tests.ztest(alone_friends, family))
 
-
     # 4. Hypothesentest:
     print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - Hypothesentest 4 - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    # Testen auf Normalverteilung
+    print(stat.kstest(data['f15_14'], 'norm'))
     biobuyer = data['f15_14'][(data['f8'] == 1) | (data['f8'] == 2) | (data['f8'] == 3)]
     nobiobuyer = data['f15_14'][(data['f8'] == 4) | (data['f8'] == 5) | (data['f8'] == 6)]
     print(tests.ztest(biobuyer, nobiobuyer))
 
+
     # 5. Hypothesentest: Testen, ob Leute die im Alltag bereits Bio kaufen, im Urlaub bereit sind dafuer mehr zu zahlen
     print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - Hypothesentest 5 - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    # Testen auf Normalverteilung
+    print(stat.kstest(data['f18_2'], 'norm'))
     biobuyer = data['f18_2'][(data['f8'] == 1) | (data['f8'] == 2) | (data['f8'] == 3)]
     nobiobuyer = data['f18_2'][(data['f8'] == 4) | (data['f8'] == 5) | (data['f8'] == 6)]
     print(tests.ztest(biobuyer, nobiobuyer))
