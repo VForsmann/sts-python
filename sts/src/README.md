@@ -20,3 +20,18 @@ Wenn ein Element Teil der Sidebar werden soll (Hierzu am besten Textelemente wie
 sorgt für einen automatischen Eintrag in der Sidebar.
 
 Ein Eintrag in der Sidebar ist ebenfalls `smooth-scrollable`
+
+### Backup-links
+
+Ein Backup link ist ein Element was ins Backup verweist.
+Per click-event wird ein scrolling an die Stelle ins Backup betrieben. Um wieder zurück zu navigieren kann auf das Element im Backup geklickt werden - dies führt zu automatischem "zurückscrollen".
+
+Vorgehen dafür:
+
+`<p scrollTo="backupinfo">Test</p>`
+scrollt zum Element mit der id `backupinfo`: `<h1 class="navPoint-l" id="backupinfo">Backup-Info</h1>`
+
+Das automatische zurückscrollen ist immer aktiviert, d.h. nach dem klick auf das `p` wird auf dem `h1` ebenfalls ein click-event registriert.
+Es ist egal wo diese Elemente stehen, es funktionieren auch scrollings außerhalb des Backups - es ist aber ursprünglich dazu gedacht.
+
+Das automatische zurückscrollen entfällt nach einmaligem klicken.
