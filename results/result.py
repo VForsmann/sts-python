@@ -106,3 +106,9 @@ def do(filename):
     biobuyer = data['f15_14'][(data['f8'] == 1) | (data['f8'] == 2) | (data['f8'] == 3)]
     nobiobuyer = data['f15_14'][(data['f8'] == 4) | (data['f8'] == 5) | (data['f8'] == 6)]
     print(tests.ztest(biobuyer, nobiobuyer))
+
+    # 5. Hypothesentest: Testen, ob Leute die im Alltag bereits Bio kaufen, im Urlaub bereit sind dafuer mehr zu zahlen
+    print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - Hypothesentest 5 - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    biobuyer = data['f18_2'][(data['f8'] == 1) | (data['f8'] == 2) | (data['f8'] == 3)]
+    nobiobuyer = data['f18_2'][(data['f8'] == 4) | (data['f8'] == 5) | (data['f8'] == 6)]
+    print(tests.ztest(biobuyer, nobiobuyer))
