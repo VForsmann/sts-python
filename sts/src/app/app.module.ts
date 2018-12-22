@@ -7,6 +7,7 @@ import {IntroductionComponent} from './components/introduction/introduction.comp
 import {DataUnderstandingComponent} from './components/data-understanding/data-understanding.component';
 import {RouterModule} from "@angular/router";
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { BackupComponent } from './components/backup/backup.component';
 
 @NgModule({
     declarations: [
@@ -15,7 +16,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
         SafePipe,
         IntroductionComponent,
         DataUnderstandingComponent,
-        SidebarComponent
+        SidebarComponent,
+        BackupComponent
     ],
     imports: [
         BrowserModule,

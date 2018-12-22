@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {setContextDirty} from "@angular/core/src/render3/styling";
+import {callHooks} from "@angular/core/src/render3/hooks";
 
 @Component({
     selector: 'app-sidebar',
@@ -17,9 +19,9 @@ export class SidebarComponent implements OnInit {
     ngOnInit() {
         this.underpoints = document.getElementsByClassName(this.unterpunktL);
         this.sortElements();
-
         this.getActualElement();
         window.onscroll = () => this.getActualElement();
+        this.handleBackupScrolls();
     }
 
     getActualElement() {
@@ -45,7 +47,7 @@ export class SidebarComponent implements OnInit {
         this.underpoints = newUnderpoints;
     }
 
-    scroll(navPoint) {
+    scroll(navPoint: any) {
         this.doScrolling(navPoint.getBoundingClientRect().y, 500);
     }
 
@@ -64,5 +66,30 @@ export class SidebarComponent implements OnInit {
                 window.requestAnimationFrame(step);
             }
         })
+    }
+
+    handleBackupScrolls() {
+
+        let scrollTos = Array.from(document.querySelectorAll('[scrollTo]'));
+        scrollTos.forEach((elem) => {
+            elem.addEventListener('click', () => {
+                let matchedValue = elem.attributes.getNamedItem('scrollTo').value;
+                let elemFound = document.getElementById(matchedValue);
+
+                function activeListener() {
+                    this.scroll(elem);
+                    elemFound.removeEventListener('click', list);
+                }
+
+                let list = () => activeListener.call(this);
+                try {
+                    elemFound.addEventListener('click', list);
+                    this.scroll(elemFound);
+                } catch (err) {
+                    console.warn("Es wurde ein 'scrollTo' Attribut verwendet ohne die ID des zugehörigen Elements korrekt zu setzen.")
+                }
+            })
+        })
+
     }
 }
