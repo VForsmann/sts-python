@@ -5,6 +5,7 @@ import {GraphComponent} from './components/graph/graph.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {IntroductionComponent} from './components/introduction/introduction.component';
 import {DataUnderstandingComponent} from './components/data-understanding/data-understanding.component';
+import {DataPreparationComponent} from './components/data-preparation/data-preparation.component';
 import {RouterModule} from "@angular/router";
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BackupComponent } from './components/backup/backup.component';
@@ -16,6 +17,7 @@ import { BackupComponent } from './components/backup/backup.component';
         SafePipe,
         IntroductionComponent,
         DataUnderstandingComponent,
+        DataPreparationComponent,
         SidebarComponent,
         BackupComponent
     ],
