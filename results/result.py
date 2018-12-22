@@ -3,7 +3,7 @@ import correlations.regression as regr
 import functions as fn
 import statsmodels.stats.weightstats as tests
 import scipy.stats as stat
-
+import graphs.Clusteranalyse.clusteranalyse as cluster_result
 
 def do(filename):
     data = fn.load_data(filename)
@@ -50,6 +50,7 @@ def do(filename):
     print(prep_f17.describe())
 
     # 5. Assignment --> cluster analysis
+    cluster_result.calculate_cluster()
 
     # 6. Assignment
     print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 6. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
