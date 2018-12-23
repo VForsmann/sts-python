@@ -10,10 +10,11 @@ def do(filename):
 
     # 1. Assignment
     # regression for assigment 1
+    # 16_3 und 16_8 geloescht wegen Scheinkorrelation
     print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 1. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
-    food = ['f4_13', 'f8', 'f9', 'f10_1', 'f10_2', 'f15_8', 'f16_3', 'f16_8', 'f18_2']
+    food = ['f4_13', 'f8', 'f9', 'f10_1', 'f10_2', 'f15_8', 'f18_2']
     well_being = 'f18_7'
-    food_and_well_being = ['f4_13', 'f8', 'f9', 'f10_1', 'f10_2', 'f15_8', 'f16_3', 'f16_8', 'f18_2', 'f18_7']
+    food_and_well_being = ['f4_13', 'f8', 'f9', 'f10_1', 'f10_2', 'f15_8', 'f18_2', 'f18_7']
     print('---- correlation ----')
     first_corr = corr.corr_for_prep_data(data[food_and_well_being], filename='first')
     print(first_corr)

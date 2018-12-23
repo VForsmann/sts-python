@@ -6,9 +6,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {IntroductionComponent} from './components/introduction/introduction.component';
 import {DataUnderstandingComponent} from './components/data-understanding/data-understanding.component';
 import {DataPreparationComponent} from './components/data-preparation/data-preparation.component';
-import {RouterModule} from "@angular/router";
+import {RouterModule} from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BackupComponent } from './components/backup/backup.component';
+import { ResultComponent } from './components/result/result.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { BackupComponent } from './components/backup/backup.component';
         DataUnderstandingComponent,
         DataPreparationComponent,
         SidebarComponent,
-        BackupComponent
+        BackupComponent,
+        ResultComponent
     ],
     imports: [
         BrowserModule,
