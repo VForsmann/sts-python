@@ -3,14 +3,10 @@
     <h1 class="navPoint-l">Ergebnisse</h1>
     <p class="navPoint-sm"> Aufgabe 1 </p>
     <p> Welchen Einfluss hat das Essen auf das Wohlbefinden der Gäste? </p>
+    <li> Heatmap für die Korrelation</li>
     <app-graph [height]="'500px'" [width]="'100%'" [data]="'first_heatmap.html'"></app-graph>
-    <p>
-      Die Korrelation zeigt Zusammenhänge zwischen den von uns ausgewählten Variablen, die wir vorher festgelegt haben.
-      Nach der Korrelation wurde eine Regression durchgeführt, um zu wissen, wie hoch der Einfluss der einzelnen
-      Variablen auf
-      das Wohlbefinden der Gäste hat.
-      Zuerst wurde der VIF Wert der einzelnen Variablen berechnet, um eine Multikollinearität auszuschließen.
-    </p>
+
+      <li> Berechnung der VIF Werte </li>
     <table class="table">
       <thead>
         <tr>
@@ -24,10 +20,9 @@
         </tr>
       </tbody>
     </table>
+    <li> Durchführung der Regression </li>
     <p>
-      Daraufhin wurde eine Regressionsanalyse durchgeführt. Die abhängige Variable ist f18_7 (steigert BIO-Essen das
-      Wohlbefinden der Gäste).
-      Aus der Regressionsanalyse lässt sich daraufhin folgende Regressionsfunktion ableiten:
+      BILD
     </p>
 
   </div>
