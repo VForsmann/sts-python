@@ -9,9 +9,9 @@ def do(filename):
     data = fn.load_data(filename)
 
     # 1. Assignment
-    # regression for assigment 1
+    # regression for assingment 1
     # 16_3 und 16_8 geloescht wegen Scheinkorrelation
-    print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 1. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 1. Assignment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
     food = ['f4_13', 'f8', 'f9', 'f10_1', 'f10_2', 'f15_8', 'f18_2']
     well_being = 'f18_7'
     food_and_well_being = ['f4_13', 'f8', 'f9', 'f10_1', 'f10_2', 'f15_8', 'f18_2', 'f18_7']
@@ -27,20 +27,20 @@ def do(filename):
     regr.reg_for_prep_data(sport, well_being, data)
 
     # 2. Assignment
-    print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 2. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 2. Assignment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
     print(data['f4_13'][(data['f4_13'] < 8) & (data['f4_13'] > 0)].describe())
     sec_corr = corr.corr_for_prep_data(data[['f4_13', 'f5_7', 'f5_8', 'f5_10', 'f8', 'f9', 'f10_1', 'f10_2', 'f18_2', 'f18_7']], filename='second')
     print(sec_corr)
     corr.corr_heatmap(sec_corr, filename='second')
 
     # 3. Assignment
-    print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 3. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 3. Assignment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
     # TODO hier noch ein plot erstellen, der pro frage den Mittelwert darstellt und ggf. irgendwie noch die std
     bio_elements = ['f15_1', 'f15_2', 'f15_3', 'f15_4', 'f15_5', 'f15_6', 'f15_7', 'f15_8', 'f15_9', 'f15_10', 'f15_11', 'f15_12', 'f15_13', 'f15_14', 'f15_15', 'f15_16']
     print(data[bio_elements][(data[bio_elements] < 8) & (data[bio_elements] > 0)].describe())
 
     # 4. Assignment
-    print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 4. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 4. Assignment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
     # TODO  0 reinnehmen und -99 raus. evtl. noch weiteres prep; hier noch ein plot erstellen, der pro frage den Mittelwert darstellt und
     #  ggf. irgendwie noch die std
     print('Leute, die bereit sind für Bio mehr zu zahlen, würden im Schnitt x mehr zahlen:')
@@ -54,14 +54,14 @@ def do(filename):
     cluster_result.calculate_cluster()
 
     # 6. Assignment
-    print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 6. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 6. Assignment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
     # TODO prüfen, ob die 0er und 8er rausgennommen werden sollen; hier noch ein plot erstellen, der pro Frage den
     #  Mittelwert darstellt und ggf. irgendwie noch die std; hier noch eine Korreltation oder Regression
     bio_food = ['f16_1', 'f16_2', 'f16_3', 'f16_4', 'f16_5', 'f16_6', 'f16_7', 'f16_8', 'f16_9']
     print(data[bio_food][(data[bio_food] < 8) & (data[bio_food] > 0)].describe())
 
     # 7. Assignment
-    print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 7. Assigment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 7. Assignment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
     logos = data[['f12_1', 'f12_2', 'f12_3', 'f12_4', 'f12_5', 'f12_6', 'f12_7', 'f12_8', 'f12_9']]
     print('So oft wurden die einzelnen Bio-Siegel angekreuzt')
     print(fn.sum_characteristics(logos.values))
