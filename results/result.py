@@ -82,8 +82,8 @@ def do(filename):
     without_child = data['f9'][(data['f2'] == 1) | (data['f2'] == 2)]
     with_child = data['f9'][data['f2'] == 3]
     print(tests.ztest(without_child, with_child))
-    without_child = data['f9'][(data['f23_1'] > 0) | (data['f23_2'] > 0) | (data['f23_3'] > 0) | (data['f23_4'] > 0)]
-    with_child = data['f9'][(data['f23_1'] == 0) & (data['f23_2'] == 0) & (data['f23_3'] == 0) & (data['f23_4'] == 0)]
+    with_child = data['f9'][(data['f23_1'] > 0) | (data['f23_2'] > 0) | (data['f23_3'] > 0) | (data['f23_4'] > 0)]
+    without_child = data['f9'][(data['f23_1'] == 0) & (data['f23_2'] == 0) & (data['f23_3'] == 0) & (data['f23_4'] == 0)]
     print(tests.ztest(without_child, with_child))
 
     # 2. Hypothesentest:  Frauen bevorzugen Bio-Nahrung mehr als Männer ?
