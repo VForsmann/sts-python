@@ -1,7 +1,8 @@
 import pandas as pd
 import functions as fn
 import numpy as np
-
+import plotly as plotly
+import plotly.graph_objs as go
 
 def do(filename):
     raw_data = fn.load_data(filename)
@@ -70,7 +71,8 @@ def do(filename):
     # f12 - sum
     logos = data[['f12_1', 'f12_2', 'f12_3', 'f12_4', 'f12_5', 'f12_6', 'f12_7', 'f12_8', 'f12_9']].replace(' ', '0')
     sum_logos = fn.sum_characteristics(logos.values)
-
+    hist_data = [go.Bar(x=['f12_1', 'f12_2', 'f12_3', 'f12_4', 'f12_5', 'f12_6', 'f12_7', 'f12_8', 'f12_9'], y=sum_logos)]
+    plotly.offline.plot(hist_data, filename='./graphs/html/htmlGraphs/logo_bar.html')
 
     # f17 Calculate mean of the percentage with zero and without zero
     data['f17'] = pd.to_numeric(data['f17'].astype('str').str.replace(',', '.'), errors='coerce')
