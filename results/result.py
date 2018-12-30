@@ -95,7 +95,7 @@ def do(filename):
     female = data['f9'][(data['f21'] == 2)]
     print(tests.ztest(female, male))
 
-    # 3. Hypothesentest: Familien legen mehr Wert auf touristischen Qualitätssiegel
+    # 3. Hypothesentest: Familien legen mehr Wert auf touristische Qualitätssiegel
     # als Alleinreisende oder Ehepartner / Freundin ?
     print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - Hypothesentest 3 - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
     # Testen auf Normalverteilung
