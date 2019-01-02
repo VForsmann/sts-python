@@ -6,6 +6,7 @@ from sklearn.decomposition import PCA
 import factor_analyzer as kaiser
 import plotly.figure_factory as ff
 import plotly as plotly
+import plotly.graph_objs as go
 
 def calculate_cluster():
     data = pd.read_csv('./data_preparation/data_preparation.csv', sep=';', na_values='Nothing', error_bad_lines=False, index_col=0)
@@ -131,12 +132,7 @@ def calculate_cluster():
 
     data = [trace0, trace1, trace2, trace0cluster, trace1cluster, trace2cluster]
     layout = dict(
-    title = 'Robinson Kundencluster',
-    scene = dict(
-        xaxis = dict( zeroline=False ),
-        yaxis = dict( zeroline=False ),
-        zaxis = dict( zeroline=False ),
-    )
+        title = 'Robinson Kundencluster'
     )
     fig = dict( data=data, layout=layout )
     # Use py.iplot() for IPython notebook
