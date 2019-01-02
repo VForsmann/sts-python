@@ -16,7 +16,7 @@ fs.readdir(graphs, function (err, files) {
     }
     console.log("Start to read Files...")
     files.forEach(file => {
-        console.log("Read: " + file + "; Located in: " + __dirname + '/' + graphs + '/' + file);
+        console.log("Read: " + file + "; Located under: http://localhost:" + server.address().port + '/' + file);
         app.get('/' + file, function (req, res) {
             res.sendFile(path.join(__dirname + '/' + graphs + '/' + file));
         });

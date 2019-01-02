@@ -29,9 +29,6 @@ def calculate_cluster():
     factor_components = pca.fit_transform(data[columns_for_clustering])
     factor_df = pd.DataFrame(data=factor_components, columns=['first', 'second', 'third'])
 
-    # Fuer Vitus, hier sind die Faktoren drin fuer den 3D graphen
-    print(factor_df)
-
     # Ueberpruefen der optimalen Clusteranzahl
     Sum_of_squared_distances = []
     K = range(1, 15)
@@ -49,6 +46,101 @@ def calculate_cluster():
 
     # Ueberpruefen der Silhouette vom Kmeans
     print(silhouette_score(factor_df, kmeans.labels_))
+
+        # Fuer Vitus, hier sind die Faktoren drin fuer den 3D graphen
+    print(factor_df)
+    clustered = factor_df.assign(cluster=pd.Series(kmeans.labels_))
+    first_cluster = clustered.loc[clustered['cluster'] == 0]
+    second_cluster = clustered.loc[clustered['cluster'] == 1]
+    third_cluster = clustered.loc[clustered['cluster'] == 2]
+
+    trace0 = {
+    'x': first_cluster['first'].values,
+    'y': first_cluster['second'].values,
+    'z': first_cluster['third'].values,
+    "marker": {
+        "color": "#A020F0", 
+        "size": 5
+    },
+    "opacity": 0.7, 
+    "mode": "markers", 
+    "name": "Cluster 1", 
+    "type": "scatter3d"
+    }
+
+    trace0cluster = {
+    'x': first_cluster['first'].values,
+    'y': first_cluster['second'].values,
+    'z': first_cluster['third'].values, 
+    "alphahull" : 5,
+    "opacity": 0.3,
+    "type": "mesh3d",
+    "color": "#A020F0",
+    "name": "Cluster 1"
+    }
+
+    trace1 = {
+    'x': second_cluster['first'].values,
+    'y': second_cluster['second'].values,
+    'z': second_cluster['third'].values,
+    "marker": {
+        "color": "#8B1A1A", 
+        "size": 5
+    }, 
+    "opacity": 0.7,
+    "mode": "markers", 
+    "name": "Cluster 2", 
+    "type": "scatter3d"
+    }
+
+    trace1cluster = {
+    'x': second_cluster['first'].values,
+    'y': second_cluster['second'].values,
+    'z': second_cluster['third'].values, 
+    "alphahull" : 5,
+    "opacity": 0.3,
+    "type": "mesh3d",
+    "color": "#8B1A1A",
+    "name": "Cluster 2"
+    }
+
+    trace2 = {
+    'x': third_cluster['first'].values,
+    'y': third_cluster['second'].values,
+    'z': third_cluster['third'].values,
+    "marker": {
+        "color": "#008B45", 
+        "size": 5
+    }, 
+    "opacity": 0.7,
+    "mode": "markers", 
+    "name": "Cluster 3", 
+    "type": "scatter3d"
+    }
+
+    trace2cluster = {
+    'x': third_cluster['first'].values,
+    'y': third_cluster['second'].values,
+    'z': third_cluster['third'].values, 
+    "alphahull" : 5,
+    "opacity": 0.3,
+    "type": "mesh3d",
+    "color": "#008B45",
+    "name": "Cluster 3"
+    }
+
+    data = [trace0, trace1, trace2, trace0cluster, trace1cluster, trace2cluster]
+    layout = dict(
+    title = 'Robinson Kundencluster',
+    scene = dict(
+        xaxis = dict( zeroline=False ),
+        yaxis = dict( zeroline=False ),
+        zaxis = dict( zeroline=False ),
+    )
+    )
+    fig = dict( data=data, layout=layout )
+    # Use py.iplot() for IPython notebook
+    plotly.offline.plot(fig, filename='./graphs/html/htmlGraphs/3dCluster.html')
 
     # Erstellen des Dendrogramms
     dendro = ff.create_dendrogram(factor_df)
