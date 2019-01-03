@@ -5,7 +5,11 @@
     <b>Welchen Einfluss hat das Essen auf das Wohlbefinden der Gäste?</b>
     <p></p>
     <p>Korrelation:</p>
-    <app-graph [height]="'500px'" [width]="'100%'" [data]="'first_heatmap.html'"></app-graph>
+    <app-graph
+      [height]="'500px'"
+      [width]="'100%'"
+      [data]="'first_heatmap.html'"
+    ></app-graph>
     <p>Entscheidend sind hier die Korrelationen mit der Frage f18_7.</p>
     <p>Berechnung der VIF Werte:</p>
     <table class="table table-sm">
@@ -21,19 +25,21 @@
         </tr>
       </tbody>
     </table>
-    <li>Durchführung der Regression</li>
+    <p>Durchführung der Regression</p>
     <p><img src="../../../assets/regression_result_1.PNG" /></p>
-    <li>Daraus lässt sich folgende Regressionsfunktion ableiten:</li>
+    <p>Daraus lässt sich folgende Regressionsfunktion ableiten:</p>
+    <img
+      class="reg-function"
+      src="../../../assets/regression_funktion_aufgabe2.jpg"
+    />
     <br />
+    <br />
+    <p class="navPoint-sm">Aufgabe 2</p>
     <p>
-      gesch. Wert f18_7 = 0,366 + 0,2062 * f14_2 + 0,126 * f8 + 0,1215 * f9 +
-      <br />
-      &nbsp; &nbsp; &nbsp;0,1591 * f10_1 + 0,1533 * f10_2 + 0,1982 * f15_8 +
-      0,1463 * f18_2
-    </p>
-    <p class="navPoint-sm"><b> Aufgabe 2 </b></p>
-    <p>
-      Ist ein Angebot von Bionahrung den Gästen wichtig / erwünscht / erwartet?
+      <b>
+        Ist ein Angebot von Bionahrung den Gästen wichtig / erwünscht /
+        erwartet?
+      </b>
     </p>
     <p>
       Frage 4_13 Wie wichtig ist Ihnen ökologisch produziertes Essen in Ihrem
@@ -71,8 +77,8 @@
     <p><b>Was bedeutet „Bio“ für die Gäste?</b></p>
     <p>Bezieht sich auf Frage 15 (Bio heißt für mich...).</p>
     <p>
-      Es wurden zur jeder Frage deskriptive Statistiken gebildet. Daraufhin
-      wurden die besten und wichtigsten Fragen herausgefiltert.
+      Es wurden zu jeder Frage deskriptive Statistiken gebildet. Daraufhin
+      wurden die bestbewerteten Fragen herausgefiltert.
     </p>
     <!-- f15_3, f15_10, f15_14 -->
     <div class="row" style="margin-bottom: 100px">
@@ -110,10 +116,12 @@
         </div>
       </div>
     </div>
-    <p class="navPoint-sm"><b> Aufgabe 4 </b></p>
+    <p class="navPoint-sm">Aufgabe 4</p>
     <p>
-      Sind die Gäste bereit für ein Angebot von Bionahrung einen Aufschlag zu
-      zahlen?
+      <b>
+        Sind die Gäste bereit für ein Angebot von Bionahrung einen Aufschlag zu
+        zahlen?
+      </b>
     </p>
     <p>Es haben nur 70 (32%) Personen die Frage mit einem Wert beantwortet.</p>
     <div class="row" style="margin-bottom: 100px">
@@ -152,12 +160,15 @@
       </b>
     </p>
     <p>
-      Die Ausgewählten Variablen wurden vor der Faktorenanalyse mit dem Kaiserkriterum überprüft:
+      Die Ausgewählten Variablen wurden vor der Faktorenanalyse mit dem
+      Kaiserkriterum überprüft:
     </p>
     <table class="table table-sm">
       <thead>
         <tr>
-          <th *ngFor="let head of headElementsKaiser" scope="col">{{ head }}</th>
+          <th *ngFor="let head of headElementsKaiser" scope="col">
+            {{ head }}
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -168,16 +179,18 @@
       </tbody>
     </table>
     <br />
-    <p>
-      Die Optimale Clusteranzahl kann man im folgenden Graphen ablesen:
-    </p>
-    <app-graph [height]="'500px'" [width]="'100%'" [data]="'optimal-cluster.html'"></app-graph>
-    <p>
-      Daraufhin wurde folgendes Dendrogramm erstellt:
-    </p>
-    <app-graph [height]="'550px'" [width]="'100%'" [data]="'dendrogramm.html'"></app-graph>
+    <p>Die Optimale Clusteranzahl kann man im folgenden Graphen ablesen:</p>
+    <app-graph
+      [height]="'500px'"
+      [width]="'100%'"
+      [data]="'optimal-cluster.html'"
+    ></app-graph>
 
-    <app-graph [height]="'800px'" [width]="'100%'" [data]="'3dCluster.html'"></app-graph>
+    <app-graph
+      [height]="'800px'"
+      [width]="'100%'"
+      [data]="'3dCluster.html'"
+    ></app-graph>
     <table class="table table-sm">
       <thead>
         <tr>
@@ -204,22 +217,26 @@
         </tr>
       </tbody>
     </table>
-    <p> 
-      <b>
-        Silhouette: 0.3982
-      </b>
-    </p>
+    <p><b> Silhouette: 0.3982 </b></p>
     <p>
+      Cluster 2:<br />
       Das Angebot von Bionahrung ist gut verdienenden Familien wichtig, die
       dafür auch bereit sind mehr zu zahlen. Sie sind generell
       gesundheitsbewusst und bevorzugen Bio Lebensmittel gegenüber
       konventionellen Lebensmitteln.
     </p>
     <p>
+      Cluster 3:<br />
+      Die Personen, die Biolebensmittel neutral gegenüber stehen, sehen bei
+      Biolebensmittel kein gutes Preis / Leistungsverhältnis. Auch wenn sie bei
+      Kindern Biolebensmittel bevorzugen würden, kaufen sie im Alltag eher
+      konventionelle Lebensmittel.
+    </p>
+    <p>
+      Cluster 1:<br />
       Personen, denen das Angebot von Bionahrung nicht so wichtig ist, sind
       ebenfalls der Meinung, dass dies nicht das Wohlbefinden steigert. Sie
-      kaufen Biolebensmittel auch nicht im Alltag und sind nicht bereit für
-      Biolebensmittel mehr zu bezahlen.
+      haben keine Kinder und empfinden Biologisches essen als nicht wichtig.
     </p>
     <br />
 
@@ -348,9 +365,13 @@
     </div>
     <br />
 
-    <app-graph [height]="'500px'" [width]="'100%'" [data]="'logo_bar.html'"></app-graph>
+    <app-graph
+      [height]="'500px'"
+      [width]="'100%'"
+      [data]="'logo_bar.html'"
+    ></app-graph>
 
-    <div class="row" style="margin-bottom: 100px">
+    <div class="row logo-cards">
       <div class="col-sm-4">
         <div class="card border-success">
           <div class="card-body">
@@ -407,8 +428,8 @@
       </div>
     </div>
     <p>
-      Das Ergebnis des Hypothesentests beträgt 8,78 und liegt somit über den
-      Alpha-Fehler von 5%. Hypothese 1 kann somit nicht angenommen werden.
+      Das Ergebnis des Hypothesentests beträgt 8,78% und liegt somit über den
+      Alpha-Fehler von 5%. Die Alternativhypothese kann somit nicht angenommen werden.
     </p>
     <br />
     <h2 class="navPoint-sm">Hypothese 2</h2>
@@ -421,8 +442,8 @@
       Hierfür wurden zwei Geschlechtsgruppen anhand Frage 21 gebildet
     </li>
     <p>
-      Das Ergebnis des Hypothesentests beträgt 92,4 und liegt somit deutlich
-      über den Alpha-Fehler von 5%. Hypothese 2 kann somit nicht angenommen
+      Das Ergebnis des Hypothesentests beträgt 92,4% und liegt somit deutlich
+      über den Alpha-Fehler von 5%. Die Alternativhypothese kann somit nicht angenommen
       werden.
     </p>
     <br />
@@ -432,8 +453,8 @@
       Alleinreisende oder Ehepartner / Freundin?
     </p>
     <li>
-      Betrachtung der Frage f18_1 (BBei der Reiseplanung achte ich auf
-      touristische Qualitätssiegel1)
+      Betrachtung der Frage f18_1 (Bei der Reiseplanung achte ich auf
+      touristische Qualitätssiegel)
     </li>
     <li>Bilden zweier Urlaubergruppen</li>
     <div class="row" style="margin-bottom: 50px; margin-top: 50px">
@@ -460,8 +481,8 @@
       </div>
     </div>
     <p>
-      Das Ergebnis des Hypothesentests beträgt 56,5 und liegt somit deutlich
-      über den Alpha-Fehler von 5%. Hypothese 3 kann somit nicht angenommen
+      Das Ergebnis des Hypothesentests beträgt 56,5% und liegt somit deutlich
+      über den Alpha-Fehler von 5%. Die Alternativhypothese kann somit nicht angenommen
       werden.
     </p>
     <br />
@@ -472,7 +493,7 @@
     </p>
     <li>
       Betrachtung der Frage f18_2 (Für ein Angebot von Bionahrung im Urlaub
-      zahle ich gerne etwas mehr2)
+      zahle ich gerne etwas mehr)
     </li>
     <li>
       Hierfür wurden zwei Gruppen (Käufer von Biolebensmitteln & Käufer von
@@ -507,8 +528,8 @@
       </div>
     </div>
     <p>
-      Das Ergebnis des Hypothesentests beträgt 0,00 und liegt somit deutlich
-      unter den Alpha-Fehler von 5%. Hypothese 4 kann somit angenommen werden.
+      Das Ergebnis des Hypothesentests beträgt 0,00% und liegt somit deutlich
+      unter den Alpha-Fehler von 5%. Die Alternativhypothese kann somit angenommen werden.
     </p>
     <br />
   </div>
