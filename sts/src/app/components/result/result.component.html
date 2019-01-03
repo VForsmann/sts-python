@@ -5,11 +5,7 @@
     <b>Welchen Einfluss hat das Essen auf das Wohlbefinden der Gäste?</b>
     <p></p>
     <p>Korrelation:</p>
-    <app-graph
-      [height]="'500px'"
-      [width]="'100%'"
-      [data]="'first_heatmap.html'"
-    ></app-graph>
+    <app-graph [height]="'500px'" [width]="'100%'" [data]="'first_heatmap.html'"></app-graph>
     <p>Entscheidend sind hier die Korrelationen mit der Frage f18_7.</p>
     <p>Berechnung der VIF Werte:</p>
     <table class="table table-sm">
@@ -155,11 +151,33 @@
         diese Personen?
       </b>
     </p>
-    <app-graph
-      [height]="'800px'"
-      [width]="'100%'"
-      [data]="'3dCluster.html'"
-    ></app-graph>
+    <p>
+      Die Ausgewählten Variablen wurden vor der Faktorenanalyse mit dem Kaiserkriterum überprüft:
+    </p>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th *ngFor="let head of headElementsKaiser" scope="col">{{ head }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr mdbTableCol *ngFor="let el of elementsKaiser">
+          <td>{{ el.question }}</td>
+          <td>{{ el.value }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <p>
+      Die Optimale Clusteranzahl kann man im folgenden Graphen ablesen:
+    </p>
+    <app-graph [height]="'500px'" [width]="'100%'" [data]="'optimal-cluster.html'"></app-graph>
+    <p>
+      Daraufhin wurde folgendes Dendrogramm erstellt:
+    </p>
+    <app-graph [height]="'550px'" [width]="'100%'" [data]="'dendrogramm.html'"></app-graph>
+
+    <app-graph [height]="'800px'" [width]="'100%'" [data]="'3dCluster.html'"></app-graph>
     <table class="table table-sm">
       <thead>
         <tr>
@@ -186,6 +204,11 @@
         </tr>
       </tbody>
     </table>
+    <p> 
+      <b>
+        Silhouette: 0.3982
+      </b>
+    </p>
     <p>
       Das Angebot von Bionahrung ist gut verdienenden Familien wichtig, die
       dafür auch bereit sind mehr zu zahlen. Sie sind generell
@@ -325,11 +348,7 @@
     </div>
     <br />
 
-    <app-graph
-      [height]="'500px'"
-      [width]="'100%'"
-      [data]="'logo_bar.html'"
-    ></app-graph>
+    <app-graph [height]="'500px'" [width]="'100%'" [data]="'logo_bar.html'"></app-graph>
 
     <div class="row" style="margin-bottom: 100px">
       <div class="col-sm-4">
