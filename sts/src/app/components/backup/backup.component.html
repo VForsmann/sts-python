@@ -1,29 +1,105 @@
 <div class="container">
-    <h1 class="navPoint-l" id="backupinfo">Backup-Info</h1>
+  <h1 class="navPoint-l" id="backupinfo">Backup-Info</h1>
   <p id="DataPrep">Data Preparation</p>
+  <ul>
+    <li>
+      Alle Zahlen mit Komma wurden in Zahlen mit Punkt umgewandelt, da Python sonst diese als String interpretiert
+    </li>
+    <li>
+      Es wurden bei den Fragen f16_8, f19_6, f18_3 und f26 die Ausreißerwerte mit "nicht beurteilbar" oder "keine
+      Angabe" ersetzt.
+    </li>
+    <li>
+      Der Kunde mit dem Index 88 wurde komplett entfernt, da dieser ab Frage 11 nur Leerwerte enthält
+    </li>
+    <li>
+      Leerwerte wurden durch 0 ersetzt
+    </li>
+    <li>
+      Die Frage f11 wurde in folgende Kategorien eingeteilt
+      <a href="#" data-toggle="tooltip" title="Ankreuzmöglichkeit 1 bis 7">Katalog</a>,
+      <a href="#" data-toggle="tooltip" title="Ankreuzmöglichkeit 8 und 9"> Internet</a> und
+      <a href="#" data-toggle="tooltip" title="Ankreuzmöglichkeit 10"> Sonstige</a>.
+    </li>
+    <li>
+      Das Alter (Frage f22) wurde in drei Kategorien unterteilt:
+      <ul>
+        <li>Jung (bis 25)</li>
+        <li>Junge Erwachsene (25 bis 45)</li>
+        <li>Gestiegenes Alt (über 45)</li>
+      </ul>
+    </li>
+    <li>
+      Die Postleitzahlen auf ihre Gültigkeit überprüft.
+    </li>
+    <li>
+      Wenn der Kunde mit der Aussage f18_2 nicht übereinstimmt, er jedoch vorher angegeben hat, dass er einen gewissen
+      Prozentsatz mehr für Bio Nahrung zahlen würde, dann wird dort die Antwort bei f18_2 auf "nicht beurteilbar"
+      gesetzt.
+    </li>
+    <li>
+      txt_val wurden immer auf 0 gesetzt, wenn das txt Feld leer ist.
+    </li>
+    <li>
+      Die Logos wurden aufsummiert und zusammengefasst (f11)
+    </li>
+    <li>
+      Das Alter wurde kategorisiert
+    </li>
+    <li>
+      Die Differenzen von dem Geburtsjahr des Elternteils zu den einzelnen Kindern wurden berechnet (f23 - f22)
+    </li>
+    <li>
+      Die PLZ wurden bereinigt mithilfe der Ländernotationen
+    </li>
+  </ul>
+  <p id="Cluster">Clustering</p>
+  <ul>
+    <li>
+      Zuerst wurden die benötigten Frage herausgefiltert ('f4_12', 'f4_13', 'f5_7', 'f10_1', 'f10_2', 'f18_2', 'f18_7',
+      'f19_8')
+    </li>
+    <li>
+      Daraufhin wurden die Variablen mit dem Kaiser Kriterium überprüft, für die Eignung der Faktoren Analyse
+    </li>
+    <li>
+      Die Variablen wurden zu drei Faktoren zusammengefasst
+    </li>
+    <li>
+      Die optimale Clusterzahl wurde wurde ermittelt (Resultat 2)
+    </li>
+    <li>
+      Daraufhin wurde ein Dedrogramm erstellt
+    </li>
+    <li>
+      Danach wurden die Cluster mit dem K-Means Algorithmus erstellt und die Silhouette berechnet
+    </li>
+  </ul>
+
+  <p id="Sonstiges">Auffälligkeiten</p>
+  <ul>
+    <li>
+      Die Differenz vom 1. Kind zum Alter des Elternteils ist im durchschnitt viel zu hoch
       <ul>
         <li>
-          Es wurden bei den Fragen f16_8, f19_6, f18_3 und f26 die Ausreißerwerte mit "nicht beurteilbar" oder "keine Angabe" ersetzt.
+          Die meisten haben ihr erstes Kind mit 45 bekommen
         </li>
         <li>
-          Die Frage f11 wurde in folgende Kategorien eingeteilt
-          <a href="#" data-toggle="tooltip" title="Ankreuzmöglichkeit 1 bis 7">Katalog</a>,
-          <a href="#" data-toggle="tooltip" title="Ankreuzmöglichkeit 8 und 9"> Internet</a> und
-          <a href="#" data-toggle="tooltip" title="Ankreuzmöglichkeit 10"> Sonstige</a>.
-        </li>
-        <li>
-          Das Alter (Frage f22) wurde in drei Kategorien unterteilt:
-          <ul>
-            <li>Jung (bis 25)</li>
-            <li>Junge Erwachsene (25 bis 45)</li>
-            <li>Gestiegenes Alt (über 45)</li>
-          </ul>
-        </li>
-        <li>
-          Die Postleitzahlen auf ihre Gültigkeit überprüft.
-        </li>
-        <li>
-          Wenn der Kunde mit der Aussage f18_2 nicht übereinstimmt, er jedoch vorher angegeben hat, dass er einen gewissen Prozentsatz mehr für Bio Nahrung zahlen würde, dann wird dort die Antwort bei f18_2 auf "nicht beurteilbar" gesetzt.
+          Daraus folgt, dass der Fragebogen schon einige Jahre her ist
         </li>
       </ul>
+    </li>
+    <li>
+      Die PLZ sind in Deutschland verstärkt verteilt
+      <ul>
+        <li>
+          Die PLZ wurden auf die erste Zahl reduziert
+        </li>
+        <li>
+          Daraus folgt, dass viele Urlauber aus dem Süden Deutschland kommen, was eventuell
+          daran liegen kann, dass ein Standort in Österreich liegt
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
