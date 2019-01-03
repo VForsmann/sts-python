@@ -10,6 +10,7 @@ import {RouterModule} from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BackupComponent } from './components/backup/backup.component';
 import { ResultComponent } from './components/result/result.component';
+import { ConclusionComponent } from './components/conclusion/conclusion.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { ResultComponent } from './components/result/result.component';
         DataPreparationComponent,
         SidebarComponent,
         BackupComponent,
-        ResultComponent
+        ResultComponent,
+        ConclusionComponent
     ],
     imports: [
         BrowserModule,
