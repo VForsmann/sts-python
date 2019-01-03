@@ -5,3 +5,19 @@ li{
 table {
   font-size: x-large;
 }
+
+img.logo {
+  position: relative;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.row > div.col-sm-1 {
+  font-size: 20px;
+}
+
+.logos > .row {
+  justify-content: center;
+  text-align: center;
+}
