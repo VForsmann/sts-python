@@ -13,14 +13,17 @@ def corr_for_prep_data(data, filename):
         .dropna(axis='columns', how='all')
 
     # creating html correlation table
-    filtered_corr.to_html('./graphs/html/htmlGraphs/' + filename + '_corr_table.html')
-    html = open('./graphs/html/htmlGraphs/' + filename + '_corr_table.html', 'a')
+    filtered_corr.to_html('./graphs/html/htmlGraphs/' +
+                          filename + '_corr_table.html')
+    html = open('./graphs/html/htmlGraphs/' +
+                filename + '_corr_table.html', 'a')
     html.write("""<script>
     let tds = document.getElementsByTagName("td");
-    
+
     for (td of tds) {
     td.onclick = (event) => {
-    alert("Spalte: " + getNameOfIndex(event.srcElement.cellIndex) + " Zeile: " + getNameOfIndex(event.srcElement.parentElement.rowIndex));
+    alert("Spalte: " + getNameOfIndex(event.srcElement.cellIndex) + \
+          " Zeile: " + getNameOfIndex(event.srcElement.parentElement.rowIndex));
     }
     }
     function getNameOfIndex(index) {
@@ -34,6 +37,11 @@ def corr_for_prep_data(data, filename):
 
 
 def corr_heatmap(data, filename):
-    trace = go.Heatmap(z=data.values, x=data.columns, y=data.columns)
+    trace = go.Heatmap(z=data.values, x=data.columns, y=data.columns, colorscale=[
+        [0.0, 'rgb(255,255,255)'],
+        [0.35, 'rgb(0, 191, 255)'],
+        [0.6, 'rgb(0,0,139)'],
+        [1.0, 'rgb(0,0,0)']])
     data = [trace]
-    plotly.offline.plot(data, filename='./graphs/html/htmlGraphs/' + filename + '_heatmap.html')
+    plotly.offline.plot(
+        data, filename='./graphs/html/htmlGraphs/' + filename + '_heatmap.html')

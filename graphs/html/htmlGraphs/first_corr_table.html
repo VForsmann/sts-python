@@ -104,10 +104,10 @@
   </tbody>
 </table><script>
     let tds = document.getElementsByTagName("td");
-    
+
     for (td of tds) {
     td.onclick = (event) => {
-    alert("Spalte: " + getNameOfIndex(event.srcElement.cellIndex) + " Zeile: " + getNameOfIndex(event.srcElement.parentElement.rowIndex));
+    alert("Spalte: " + getNameOfIndex(event.srcElement.cellIndex) +           " Zeile: " + getNameOfIndex(event.srcElement.parentElement.rowIndex));
     }
     }
     function getNameOfIndex(index) {

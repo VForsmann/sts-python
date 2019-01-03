@@ -31,7 +31,7 @@ def do(filename):
     print(data['f4_13'][(data['f4_13'] < 8) & (data['f4_13'] > 0)].describe())
     sec_corr = corr.corr_for_prep_data(data[['f4_13', 'f5_7', 'f5_8', 'f5_10', 'f8', 'f9', 'f10_1', 'f10_2', 'f18_2', 'f18_7']], filename='second')
     print(sec_corr)
-    corr.corr_heatmap(sec_corr, filename='second')
+    # corr.corr_heatmap(sec_corr, filename='second')
 
     # 3. Assignment
     print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 3. Assignment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
