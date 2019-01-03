@@ -1,8 +1,9 @@
 <div id="{{ 'Result' }}">
   <div class="container">
     <h1 class="navPoint-l">Ergebnisse</h1>
-    <p class="navPoint-sm"><b> Aufgabe 1 </b></p>
-    <p>Welchen Einfluss hat das Essen auf das Wohlbefinden der Gäste?</p>
+    <p class="navPoint-sm hidden">Aufgabe 1</p>
+    <b>Welchen Einfluss hat das Essen auf das Wohlbefinden der Gäste?</b>
+    <p></p>
     <p>Korrelation:</p>
     <app-graph
       [height]="'500px'"
@@ -33,11 +34,14 @@
       &nbsp; &nbsp; &nbsp;0,1591 * f10_1 + 0,1533 * f10_2 + 0,1982 * f15_8 +
       0,1463 * f18_2
     </p>
-    <p class="navPoint-sm"><b> Aufgabe 2 </b></p>
+    <p class="navPoint-sm">Aufgabe 2</p>
     <p>
-      Ist ein Angebot von Bionahrung den Gästen wichtig / erwünscht / erwartet?
+      <b
+        >Ist ein Angebot von Bionahrung den Gästen wichtig / erwünscht /
+        erwartet?</b
+      >
     </p>
-    <p>Deskriptive Statistiken von Frage 4_13</p>
+    <p>Deskriptive Statistiken von Frage 4_13:</p>
     <div class="row" style="margin-bottom: 100px">
       <div class="col-sm-6">
         <div class="card border-info">
@@ -55,27 +59,23 @@
           <div class="card-body">
             <h5 class="card-title">Resultat</h5>
             <li>
-              75% der Leute ist das Angebot von Bionahrung wichtig (160,5
-              Personen)
+              75% der Personen ist das Angebot von Bionahrung sehr wichtig
+              (160,5 Personen)
             </li>
             <li>
-              95% der Personen würden wir mit der Reichweite 1 - 5 abdecken.
-              (203 Personen)
+              95% der Personen ist das Angebot sehr wichtig oder wichtig (203
+              Personen)
             </li>
           </div>
         </div>
       </div>
     </div>
-    <p class="navPoint-sm"><b> Aufgabe 3 </b></p>
-    <p>Was bedeutet „Bio“ für die Gäste?</p>
+    <p class="navPoint-sm">Aufgabe 3</p>
+    <p><b>Was bedeutet „Bio“ für die Gäste?</b></p>
+    <p>Bezieht sich auf Frage 15 (Bio heißt für mich...).</p>
     <p>
-      Bezieht sich auf Frage 15 (Bio heißt für mich...).
-      <li>
-        Es wurden zur jeder Unterkategorie deskriptive Statistiken gebildet
-      </li>
-      <li>
-        Daraufhin wurden die besten und wichtigsten Fragen herausgefiltert
-      </li>
+      Es wurden zur jeder Frage deskriptive Statistiken gebildet. Daraufhin
+      wurden die besten und wichtigsten Fragen herausgefiltert.
     </p>
     <!-- f15_3, f15_10, f15_14 -->
     <div class="row" style="margin-bottom: 100px">
@@ -113,10 +113,12 @@
         </div>
       </div>
     </div>
-    <p class="navPoint-sm"><b> Aufgabe 4 </b></p>
+    <p class="navPoint-sm">Aufgabe 4</p>
     <p>
-      Sind die Gäste bereit für ein Angebot von Bionahrung einen Aufschlag zu
-      zahlen?
+      <b>
+        Sind die Gäste bereit für ein Angebot von Bionahrung einen Aufschlag zu
+        zahlen?
+      </b>
     </p>
     <li>Es haben nur 70 Personen die Frage mit einem Wert beantwortet.</li>
     <div class="row" style="margin-bottom: 100px">
@@ -148,18 +150,56 @@
         </div>
       </div>
     </div>
-    <br />
-
     <p class="navPoint-sm">Aufgabe 5</p>
     <p>
-      Wem genau ist das Angebot von Bionahrung wichtig? Wie unterscheiden sich
-      diese Personen?
+      <b>
+        Wem genau ist das Angebot von Bionahrung wichtig? Wie unterscheiden sich
+        diese Personen?
+      </b>
     </p>
     <app-graph
       [height]="'800px'"
       [width]="'100%'"
       [data]="'3dCluster.html'"
     ></app-graph>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Cluster</th>
+          <th scope="col">Anzahl der Personen</th>
+          <th scope="col">Anteil</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>18</td>
+          <td>8,25%</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>131</td>
+          <td>60%</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>69</td>
+          <td>31,65%</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Das Angebot von Bionahrung ist gut verdienenden Familien wichtig, die
+      dafür auch bereit sind mehr zu zahlen. Sie sind generell
+      gesundheitsbewusst und bevorzugen Bio Lebensmittel gegenüber
+      konventionellen Lebensmitteln.
+    </p>
+    <p>
+      Personen, denen das Angebot von Bionahrung nicht so wichtig ist, sind
+      ebenfalls der Meinung, dass dies nicht das Wohlbefinden steigert. Sie
+      kaufen Biolebensmittel auch nicht im Alltag und sind nicht bereit für
+      Biolebensmittel mehr zu bezahlen.
+    </p>
     <br />
 
     <p class="navPoint-sm"><b> Aufgabe 6 </b></p>

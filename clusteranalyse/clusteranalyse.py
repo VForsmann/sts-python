@@ -144,9 +144,11 @@ def calculate_cluster():
     plotly.offline.plot(dendro, filename='./graphs/html/htmlGraphs/dendrogramm.html')
 
     # Funktion zum erklaeren der Cluster
-    # for c in raw_data.columns:
-    #   print("---- %s ---" % c)
-    #   print(raw_data[c][raw_data['cluster']==2].value_counts())
+    for c in raw_data.columns:
+        print("---- %s ---" % c)
+        print(raw_data[c][raw_data['cluster']==0].value_counts())
+        print(raw_data[c][raw_data['cluster']==1].value_counts())
+        print(raw_data[c][raw_data['cluster']==2].value_counts())
 
     # Cluster 0: Kinderlose großverdiener, Genießer, steigert nicht das wohlbefinden, würden nicht mehr zahlen, bevorzugen
     # kein bio vor konventioenneln, kaufen eher kein bio, nicht wichtig (Öko essen), Ehepartner ausflug
@@ -155,6 +157,6 @@ def calculate_cluster():
     # Familien
     # Cluster 2: Großverdiener, Gebildete Menschen, weltoffen/Genießer, abschrecken ist eher neutral, neutral wohlbefinden,
     # würden nicht mehr zahlen für bio, bio ist kein gutes preis/leistungverhältnis, Siegel wichtig, hochwertige aber keine
-    # abwechslungsreiche nahrung, wichtig bei kindern eher gleichgültig bei der eigenen, gleichgültige bevorzugung, kaufen
+    # abwechslungsreiche nahrung, wichtig bei kindern, eher gleichgültig bei der eigenen, gleichgültige bevorzugung, kaufen
     # es nicht im alltag, Preis wichtig, Guetesiegel ebenfalls, Öko essen egal im urlaub, Feel good extrem wichtig,
     # Sehr kiderfreundlich, sehr sportlich
