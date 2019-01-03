@@ -71,7 +71,7 @@ fig = {
       "type": "pie"
     }],
   "layout": {
-        "title":"Data Understanding",
+        "title":"Wer ist der typische Urlauber im Robinson Club?",
         "annotations": [
             {
                 "font": {
@@ -114,7 +114,7 @@ trace0 = go.Bar(
 
 data = [trace0]
 layout = go.Layout(
-    title='Reisebegleitung',
+    title='Mit wem reist der Urlauber im Robinson Club?',
 )
 
 fig = go.Figure(data=data, layout=layout)
