@@ -2,5 +2,30 @@
   <div class="container">
     <h1 class="navPoint-l">Data Preparation</h1>
     <app-graph [height]="'500px'" [width]="'100%'" [data] ="'pandas_box_plot.html'"></app-graph>
-  </div>
+      <ul>
+        <li>
+          Es wurden bei den Fragen f16_8, f19_6, f18_3 und f26 die Ausreißerwerte mit "nicht beurteilbar" oder "keine Angabe" ersetzt.
+        </li>
+        <li>
+          Die Frage f11 wurde in folgende Kategorien eingeteilt 
+          <a href="#" data-toggle="tooltip" title="Ankreuzmöglichkeit 1 bis 7">Katalog</a>,
+          <a href="#" data-toggle="tooltip" title="Ankreuzmöglichkeit 8 und 9"> Internet</a> und
+          <a href="#" data-toggle="tooltip" title="Ankreuzmöglichkeit 10"> Sonstige</a>.
+        </li>
+        <li>
+          Das Alter (Frage f22) wurde in drei Kategorien unterteilt:
+          <ul>
+            <li>Jung (bis 25)</li>
+            <li>Junge Erwachsene (25 bis 45)</li>
+            <li>Gestiegenes Alt (über 45)</li>
+          </ul>
+        </li>
+        <li>
+          Die Postleitzahlen auf ihre gültigkeit überprüft.
+        </li>
+        <li>
+          Wenn der Kunde mit der Aussage f18_2 nicht übereinstimmt, er jedoch vorher angegeben hat, dass er einen gewissen Prozentsatz mehr für Bio Nahrung zahlen würde, dann wird dort die Antwort bei f18_2 auf "nicht beurteilbar" gesetzt.
+        </li>
+      </ul>
+      </div>
 </div>
