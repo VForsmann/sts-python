@@ -1,48 +1,42 @@
-<div id="{{ 'Result' }}">
+<div id="{{'Result'}}">
   <div class="container">
     <h1 class="navPoint-l">Ergebnisse</h1>
     <p class="navPoint-sm"><b> Aufgabe 1 </b></p>
-    <p>Welchen Einfluss hat das Essen auf das Wohlbefinden der Gäste?</p>
-    <p>Korrelation:</p>
-    <app-graph
-      [height]="'500px'"
-      [width]="'100%'"
-      [data]="'first_heatmap.html'"
-    ></app-graph>
-    <p>Entscheidend sind hier die Korrelationen mit der Frage f18_7.</p>
-    <p>Berechnung der VIF Werte:</p>
-    <table class="table table-sm">
+    <p> Welchen Einfluss hat das Essen auf das Wohlbefinden der Gäste? </p>
+    <li> Heatmap für die Korrelation</li>
+    <app-graph [height]="'500px'" [width]="'100%'" [data]="'first_heatmap.html'"></app-graph>
+
+    <li> Berechnung der VIF Werte </li>
+    <table class="table">
       <thead>
         <tr>
-          <th *ngFor="let head of headElements" scope="col">{{ head }}</th>
+          <th *ngFor="let head of headElements" scope="col">{{head}} </th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let el of elements">
-          <td>{{ el.question }}</td>
-          <td>{{ el.value }}</td>
+        <tr mdbTableCol *ngFor="let el of elements">
+          <td>{{el.question}}</td>
+          <td>{{el.value}}</td>
         </tr>
       </tbody>
     </table>
-    <p>Durchführung der Regression in Abhängigkeit von f18_7:</p>
-    <p><img src="../../../assets/regression_result_1.PNG" /></p>
-    <p>Daraus lässt sich folgende Regressionsfunktion ableiten:</p>
+    <li> Durchführung der Regression </li>
     <p>
-      gesch. Wert f18_7 = 0,366 + 0,2062 * f4_13 + 0,126 * f8 + 0,1215 * f9 +
-      <br />
-      &nbsp; &nbsp; &nbsp;0,1591 * f10_1 + 0,1533 * f10_2 + 0,1982 * f15_8 +
-      0,1463 * f18_2
+      <img src="../../../assets/regression_result_1.PNG">
     </p>
+    <li> Daraus lässt sich folgende Regressionsfunktion ableiten: </li>
+    <br>
+    <p>gesch. Wert f18_7 = 0,366 + 0,2062 * f14_2 + 0,126 * f8 + 0,1215 * f9 +
+      <br> 
+      &nbsp; &nbsp; &nbsp;0,1591 * f10_1 + 0,1533 * f10_2 + 0,1982 * f15_8 + 0,1463 * f18_2</p>
     <p class="navPoint-sm"><b> Aufgabe 2 </b></p>
-    <p>
-      Ist ein Angebot von Bionahrung den Gästen wichtig / erwünscht / erwartet?
-    </p>
-    <p>Deskriptive Statistiken von Frage 4_13</p>
+    <p> Ist ein Angebot von Bionahrung den Gästen wichtig / erwünscht / erwartet? </p>
+    <p> Frage 4_13 Wie wichtig ist Ihnen ökologisch produziertes Essen in Ihrem Urlaub</p>
     <div class="row" style="margin-bottom: 100px">
       <div class="col-sm-6">
         <div class="card border-info">
           <div class="card-body">
-            <h5 class="card-title">Deskriptive Statistiken:</h5>
+            <h5 class="card-title">Deskriptive Statistiken</h5>
             <li>Mittelwert: 2.2710</li>
             <li>Stdabw.: 1.2602</li>
             <li>Median: 2</li>
@@ -54,28 +48,18 @@
         <div class="card border-info">
           <div class="card-body">
             <h5 class="card-title">Resultat</h5>
-            <li>
-              75% der Leute ist das Angebot von Bionahrung wichtig (160,5
-              Personen)
-            </li>
-            <li>
-              95% der Personen würden wir mit der Reichweite 1 - 5 abdecken.
-              (203 Personen)
-            </li>
+            <li> 75% der Leute haben mit min. einer 3 geantwortet (160,5 Personen)</li>
+            <li> 95% der Personen würden wir mit der Reichweite 1 - 5 abdecken. (203 Personen) </li>
           </div>
         </div>
       </div>
     </div>
     <p class="navPoint-sm"><b> Aufgabe 3 </b></p>
-    <p>Was bedeutet „Bio“ für die Gäste?</p>
+    <p> Was bedeutet „Bio“ für die Gäste? </p>
     <p>
       Bezieht sich auf Frage 15 (Bio heißt für mich...).
-      <li>
-        Es wurden zur jeder Unterkategorie deskriptive Statistiken gebildet
-      </li>
-      <li>
-        Daraufhin wurden die besten und wichtigsten Fragen herausgefiltert
-      </li>
+      <li> Es wurden zur jeder Unterkategorie deskriptive Statistiken gebildet </li>
+      <li> Anschließend wurden die relevantesten Fragen herausgefiltert</li>
     </p>
     <!-- f15_3, f15_10, f15_14 -->
     <div class="row" style="margin-bottom: 100px">
@@ -114,18 +98,13 @@
       </div>
     </div>
     <p class="navPoint-sm"><b> Aufgabe 4 </b></p>
-    <p>
-      Sind die Gäste bereit für ein Angebot von Bionahrung einen Aufschlag zu
-      zahlen?
-    </p>
-    <li>Es haben nur 70 Personen die Frage mit einem Wert beantwortet.</li>
+    <p> Sind die Gäste bereit für ein Angebot von Bionahrung einen Aufschlag zu zahlen? </p>
+    <p> Es haben nur 70 (32%) Personen die Frage mit einem Wert beantwortet.</p>
     <div class="row" style="margin-bottom: 100px">
       <div class="col-sm-6">
         <div class="card border-info">
           <div class="card-body">
-            <h5 class="card-title">
-              Personen die beantwortet haben (70 Personen)
-            </h5>
+            <h5 class="card-title">Personen die geantwortet haben (70 Personen)</h5>
             <li>Mittelwert: 9.5486</li>
             <li>Stdabw.: 12.6210</li>
             <li>Median: 5.0000</li>
@@ -136,10 +115,7 @@
       <div class="col-sm-6">
         <div class="card border-info">
           <div class="card-body">
-            <h5 class="card-title">
-              Personen die nicht geantwortet haben bzw. keine glaubwürdige
-              Antwort abgegeben haben (184 Personen)
-            </h5>
+            <h5 class="card-title">alle Personen die etwas angekreuzt haben (184 Personen)</h5>
             <li>Mittelwert: 3.6326</li>
             <li>Stdabw.: 9.0370</li>
             <li>Median: 0.0000</li>
@@ -148,26 +124,16 @@
         </div>
       </div>
     </div>
-    <br />
+    <br>
 
-    <p class="navPoint-sm">Aufgabe 5</p>
-    <p>
-      Wem genau ist das Angebot von Bionahrung wichtig? Wie unterscheiden sich
-      diese Personen?
-    </p>
-    <app-graph
-      [height]="'800px'"
-      [width]="'100%'"
-      [data]="'3dCluster.html'"
-    ></app-graph>
-    <br />
+    <p class="navPoint-sm"> Aufgabe 5 </p>
+    <p> Wem genau ist das Angebot von Bionahrung wichtig? Wie unterscheiden sich diese Personen? </p>
+    <app-graph [height]="'800px'" [width]="'100%'" [data]="'3dCluster.html'"></app-graph>
+    <br>
 
     <p class="navPoint-sm"><b> Aufgabe 6 </b></p>
-    <p>
-      Bei welchen Lebensmittelarten ist das Angebot von „Bio“ besonders wichtig
-      / unwichtig?
-    </p>
-    <li>Wichtig</li>
+    <p> Bei welchen Lebensmittelarten ist das Angebot von „Bio“ besonders wichtig / unwichtig? </p>
+    <li> Wichtig </li>
     <div class="row" style="margin-bottom: 100px">
       <div class="col-sm-4">
         <div class="card border-success">
@@ -239,22 +205,18 @@
         </div>
       </div>
     </div>
-    <br />
+    <br>
     <p class="navPoint-sm"><b> Aufgabe 7 </b></p>
-    <p>Welche Biosiegel sind den Gästen bekannt?</p>
-    <app-graph
-      [height]="'500px'"
-      [width]="'100%'"
-      [data]="'logo_bar.html'"
-    ></app-graph>
+    <p> Welche Biosiegel sind den Gästen bekannt? </p>
+    <app-graph [height]="'500px'" [width]="'100%'" [data]="'logo_bar.html'"></app-graph>
     <div class="row" style="margin-bottom: 100px">
       <div class="col-sm-4">
         <div class="card border-success">
           <div class="card-body">
             <h5 class="card-title">Bekannt</h5>
-            <li><img src="../../../assets/logo/8.PNG" /></li>
-            <li><img src="../../../assets/logo/5.PNG" /></li>
-            <li><img src="../../../assets/logo/6.PNG" /></li>
+            <li><img src="../../../assets/logo/8.PNG"></li>
+            <li><img src="../../../assets/logo/5.PNG"></li>
+            <li><img src="../../../assets/logo/6.PNG"></li>
           </div>
         </div>
       </div>
@@ -262,148 +224,107 @@
         <div class="card border-danger">
           <div class="card-body">
             <h5 class="card-title">Unbekannt</h5>
-            <li><img src="../../../assets/logo/9.PNG" /></li>
-            <li><img src="../../../assets/logo/4.PNG" /></li>
-            <li><img src="../../../assets/logo/3.PNG" /></li>
+            <li><img src="../../../assets/logo/9.PNG"></li>
+            <li><img src="../../../assets/logo/4.PNG"></li>
+            <li><img src="../../../assets/logo/3.PNG"></li>
           </div>
         </div>
       </div>
     </div>
-    <br />
+    <br>
     <h2 class="navPoint-sm">Hypothese 1</h2>
-    <p>
-      Familien mit Kinder bevorzugen Bionahrung mehr als Urlauber ohne Kinder?
-    </p>
-    <li>
-      Betrachtung der Frage f9 (Bevorzugen Sie grundsätzlich Bionahrung im
-      Vergleich zu konventionell hergestellten Produkten?)
-    </li>
+    <p>Familien mit Kinder bevorzugen Bionahrung mehr als Urlauber ohne Kinder? </p>
+    <li>Betrachtung der Frage f9 (Bevorzugen Sie grundsätzlich Bionahrung im Vergleich zu konventionell hergestellten Produkten?)</li>
     <li>Bildung zweier Urlaubsgruppen</li>
     <div class="row" style="margin-bottom: 50px; margin-top: 50px">
-      <div class="col-sm-6">
-        <div class="card border-info">
-          <div class="card-body">
-            <h5 class="card-title">Gruppe ohne Kinder</h5>
-            <li>Reisen alleine, mit Ehepartner / Freund</li>
-            <li>Keine Angaben zum Alter der Kinder</li>
+          <div class="col-sm-6">
+            <div class="card border-info">
+              <div class="card-body">
+              <h5 class="card-title">Gruppe ohne Kinder</h5>
+                <li>Reisen alleine, mit Ehepartner / Freund</li>
+                <li>Keine Angaben zum Alter der Kinder</li>
+            </div>
+          </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card border-info">
+              <div class="card-body">
+                <h5 class="card-title">Gruppe mit Kinder</h5>
+                <li>Reisen als Familie</li>
+                <li>Angaben zum Alter der Kinder größer 0</li>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="card border-info">
-          <div class="card-body">
-            <h5 class="card-title">Gruppe mit Kinder</h5>
-            <li>Reisen als Familie</li>
-            <li>Angaben zum Alter der Kinder größer 0</li>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p>
-      Das Ergebnis des Hypothesentests beträgt 8,78 und liegt somit über den
-      Alpha-Fehler von 5%. Hypothese 1 kann somit nicht angenommen werden.
-    </p>
-    <br />
+    <p>Das Ergebnis des Hypothesentests beträgt 8,78 und liegt somit über den Alpha-Fehler von 5%.
+      Hypothese 1 kann somit nicht angenommen werden.</p>
+    <br/>
     <h2 class="navPoint-sm">Hypothese 2</h2>
-    <p>Bevorzugen Frauen Bionahrung mehr als Männer?</p>
-    <li>
-      Betrachtung der Frage f9 (Bevorzugen Sie grundsätzlich Bionahrung im
-      Vergleich zu konventionell hergestellten Produkten?)
-    </li>
-    <li style="margin-bottom: 50px">
-      Hierfür wurden zwei Geschlechtsgruppen anhand Frage 21 gebildet
-    </li>
-    <p>
-      Das Ergebnis des Hypothesentests beträgt 92,4 und liegt somit deutlich
-      über den Alpha-Fehler von 5%. Hypothese 2 kann somit nicht angenommen
-      werden.
-    </p>
-    <br />
+    <p>Bevorzugen Frauen Bionahrung mehr als Männer? </p>
+    <li>Betrachtung der Frage f9 (Bevorzugen Sie grundsätzlich Bionahrung im Vergleich zu konventionell hergestellten Produkten?)</li>
+    <li style="margin-bottom: 50px">Hierfür wurden zwei Geschlechtsgruppen anhand Frage 21 gebildet</li>
+    <p>Das Ergebnis des Hypothesentests beträgt 92,4 und liegt somit deutlich über den Alpha-Fehler von 5%.
+      Hypothese 2 kann somit nicht angenommen werden.</p>
+    <br/>
     <h2 class="navPoint-sm">Hypothese 3</h2>
-    <p>
-      Familien legen mehr Wert auf touristische Qualitätssiegel als
-      Alleinreisende oder Ehepartner / Freundin?
-    </p>
-    <li>
-      Betrachtung der Frage f18_1 (BBei der Reiseplanung achte ich auf
-      touristische Qualitätssiegel1)
-    </li>
+    <p>Familien legen mehr Wert auf touristische Qualitätssiegel als Alleinreisende oder Ehepartner / Freundin? </p>
+    <li>Betrachtung der Frage f18_1 (BBei der Reiseplanung achte ich auf touristische Qualitätssiegel1)</li>
     <li>Bilden zweier Urlaubergruppen</li>
     <div class="row" style="margin-bottom: 50px; margin-top: 50px">
-      <div class="col-sm-6">
-        <div class="card border-info">
-          <div class="card-body">
-            <h5 class="card-title">Gruppe Familie</h5>
-            <li>Reisen als Familie</li>
-            <li>Frage f2 mit dem Wert 3 (mit Familie) angegeben</li>
+          <div class="col-sm-6">
+            <div class="card border-info">
+              <div class="card-body">
+              <h5 class="card-title">Gruppe Familie</h5>
+                <li>Reisen als Familie</li>
+                <li>Frage f2 mit dem Wert 3 (mit Familie) angegeben</li>
+            </div>
+          </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card border-info">
+              <div class="card-body">
+                <h5 class="card-title">Gruppe Andersreisende</h5>
+                <li>Reisen allein, Ehepartner oder Freund(in)</li>
+                <li>Frage f2 mit dem Wert 1 (allein) oder 2 (mit Ehepartner bzw. Freund/in) angegeben</li>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="card border-info">
-          <div class="card-body">
-            <h5 class="card-title">Gruppe Andersreisende</h5>
-            <li>Reisen allein, Ehepartner oder Freund(in)</li>
-            <li>
-              Frage f2 mit dem Wert 1 (allein) oder 2 (mit Ehepartner bzw.
-              Freund/in) angegeben
-            </li>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <p>
-      Das Ergebnis des Hypothesentests beträgt 56,5 und liegt somit deutlich
-      über den Alpha-Fehler von 5%. Hypothese 3 kann somit nicht angenommen
-      werden.
-    </p>
-    <br />
+    <p>Das Ergebnis des Hypothesentests beträgt 56,5 und liegt somit deutlich über den Alpha-Fehler von 5%.
+      Hypothese 3 kann somit nicht angenommen werden.</p>
+    <br/>
     <h2 class="navPoint-sm">Hypothese 4</h2>
-    <p>
-      Käufer von Bioprodukten sind bereit im Urlaub einen Aufschlag für
-      Bionahrung zu zahlen?
-    </p>
-    <li>
-      Betrachtung der Frage f18_2 (Für ein Angebot von Bionahrung im Urlaub
-      zahle ich gerne etwas mehr2)
-    </li>
-    <li>
-      Hierfür wurden zwei Gruppen (Käufer von Biolebensmitteln & Käufer von
-      konventionell hergestellten Lebensmitteln) gebildet
-    </li>
+    <p>Käufer von Bioprodukten sind bereit im Urlaub einen Aufschlag für Bionahrung zu zahlen?</p>
+    <li>Betrachtung der Frage f18_2 (Für ein Angebot von Bionahrung im Urlaub zahle ich gerne etwas mehr2)</li>
+    <li>Hierfür wurden zwei Gruppen (Käufer von Biolebensmitteln & Käufer von konventionell hergestellten Lebensmitteln) gebildet</li>
     <div class="row" style="margin-bottom: 50px; margin-top: 50px">
-      <div class="col-sm-6">
-        <div class="card border-info">
-          <div class="card-body">
-            <h5 class="card-title">Gruppe Käufer von Biolebensmittel</h5>
-            Frage f8 mit
-            <li>1=Ausschließlich</li>
-            <li>2=Häufig</li>
-            <li>3=Eher häufig</li>
-            gekennzeichnet
+          <div class="col-sm-6">
+            <div class="card border-info">
+              <div class="card-body">
+              <h5 class="card-title">Gruppe Käufer von Biolebensmittel</h5>
+                Frage f8 mit
+                <li>1=Ausschließlich</li>
+                <li>2=Häufig</li>
+                <li>3=Eher häufig</li>
+                gekennzeichnet
+            </div>
+          </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card border-info">
+              <div class="card-body">
+              <h5 class="card-title">Gruppe Käufer von konventionellen Lebensmitteln</h5>
+                Frage f8 mit
+                <li>4=Eher selten</li>
+                <li>5=Selten</li>
+                <li>6=Nie</li>
+                gekennzeichnet
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="card border-info">
-          <div class="card-body">
-            <h5 class="card-title">
-              Gruppe Käufer von konventionellen Lebensmitteln
-            </h5>
-            Frage f8 mit
-            <li>4=Eher selten</li>
-            <li>5=Selten</li>
-            <li>6=Nie</li>
-            gekennzeichnet
-          </div>
-        </div>
-      </div>
-    </div>
-    <p>
-      Das Ergebnis des Hypothesentests beträgt 0,00 und liegt somit deutlich
-      unter den Alpha-Fehler von 5%. Hypothese 4 kann somit angenommen werden.
-    </p>
-    <br />
+    <p>Das Ergebnis des Hypothesentests beträgt 0,00 und liegt somit deutlich unter den Alpha-Fehler von 5%.
+      Hypothese 4 kann somit angenommen werden.</p>
+    <br/>
   </div>
 </div>
