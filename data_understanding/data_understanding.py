@@ -71,7 +71,7 @@ fig = {
       "type": "pie"
     }],
   "layout": {
-        "title":"Data Understanding",
+        "title":"Wer ist der typische Urlauber im Robinson Club?",
         "annotations": [
             {
                 "font": {
@@ -79,7 +79,7 @@ fig = {
                 },
                 "showarrow": False,
                 "text": "Orte",
-                "x": 0.200,
+                "x": 0.27,
                 "y": 0.5
             },
             {
@@ -88,7 +88,7 @@ fig = {
                 },
                 "showarrow": False,
                 "text": "EV",
-                "x": 0.77,
+                "x": 0.775,
                 "y": 0.5
             }
         ]
@@ -108,13 +108,13 @@ trace0 = go.Bar(
     x=['keine Angabe', 'allein', 'mit Ehepartner / Freund/in', 'mit Familie'],
     y=[countZero, countAlone, countFriend, countFamily],
     marker=dict(
-        color=['rgba(165, 42, 42, 0.4)', 'rgba(165, 42, 42, 0.7)',
-               'rgba(165, 42, 42, 0.6)', 'rgba(165, 42, 42, 1)']),
+        color=['rgba(165, 42, 42, 0.3)', 'rgba(165, 42, 42, 0.5)',
+               'rgba(165, 42, 42, 0.75)', 'rgba(165, 42, 42, 1)']),
 )
 
 data = [trace0]
 layout = go.Layout(
-    title='Reisebegleitung',
+    title='Mit wem reist der Urlauber im Robinson Club?',
 )
 
 fig = go.Figure(data=data, layout=layout)
