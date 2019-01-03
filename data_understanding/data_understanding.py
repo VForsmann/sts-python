@@ -46,7 +46,7 @@ fig = {
         'Österreich',
         'Türkei'
       ],
-      "domain": {"x": [0, .48]},
+      "domain": {"x": [0, .60]},
       "name": "Ort",
       "hoverinfo":"label+percent+name",
       "hole": .4,
@@ -79,7 +79,7 @@ fig = {
                 },
                 "showarrow": False,
                 "text": "Orte",
-                "x": 0.220,
+                "x": 0.200,
                 "y": 0.5
             },
             {
