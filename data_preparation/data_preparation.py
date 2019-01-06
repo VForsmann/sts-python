@@ -134,6 +134,8 @@ def do(filename):
     third = data['f23_3'].sum()/data['f23_3'][data['f23_3'] > 0].value_counts().sum()
     fourth = data['f23_4'].sum()/data['f23_4'][data['f23_4'] > 0].value_counts().sum()
     mittelwertAge = (first + second + third + fourth)/4
+    print('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+    print('MITTELWERT')
     print(mittelwertAge)
 
     # Berechnung durchschnittliche Anzahl an Kindern je Elternteil
@@ -142,7 +144,11 @@ def do(filename):
     countThirdChild = data['f23_3'][data['f23_3'] > 0].value_counts().sum()
     countFourthChild = data['f23_4'][data['f23_4'] > 0].value_counts().sum()
     sum = (countFirstChild + countSecondChild + countThirdChild + countFourthChild)/218
+    print('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+    print('durchschnittliche Anzahl an Kindern je Eltern')
     print(sum)
 
+    print('Data F22')
+    print(data['f22'][data['f22'] > 0].describe())
     data.to_csv('./data_preparation/data_preparation.csv', sep=';')
 

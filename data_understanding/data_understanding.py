@@ -41,13 +41,14 @@ percentage7 = count1/219*100
 fig = {
   "data": [
     {
-      "values": [percentageID1, percentageID2],
+      "values": [112,104,2],
       "labels": [
-        'Österreich',
-        'Türkei'
+          'weiblich',
+          'männlich',
+          'keine Angabe'
       ],
       "domain": {"x": [0, .60]},
-      "name": "Ort",
+      "name": "Geschlecht",
       "hoverinfo":"label+percent+name",
       "hole": .4,
       "type": "pie"
@@ -78,7 +79,7 @@ fig = {
                     "size": 20
                 },
                 "showarrow": False,
-                "text": "Orte",
+                "text": "Geschlecht",
                 "x": 0.27,
                 "y": 0.5
             },
@@ -90,12 +91,26 @@ fig = {
                 "text": "EV",
                 "x": 0.775,
                 "y": 0.5
-            }
+            },
         ]
     }
 }
 
 py.offline.plot(fig, filename='../graphs/html/htmlGraphs/tortendiagramme.html')
+
+labels = ['ordinal','nominal','metrisch']
+values = [5,8,13]
+
+trace = go.Pie(labels=labels, values=values)
+
+py.offline.plot([trace], filename='../graphs/html/htmlGraphs/skalierungdiagramm.html')
+
+labels = ['Österreich', 'Türkei']
+values = [percentageID1, percentageID2]
+
+trace1 = go.Pie(labels=labels, values=values)
+
+py.offline.plot([trace1], filename='../graphs/html/htmlGraphs/geschlecht.html')
 
 count1 = data['f26'][data['f26'] == 1].value_counts().sum()
 
