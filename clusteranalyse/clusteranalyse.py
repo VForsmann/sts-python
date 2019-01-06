@@ -144,11 +144,11 @@ def calculate_cluster():
     plotly.offline.plot(dendro, filename='./graphs/html/htmlGraphs/dendrogramm.html')
 
     # Funktion zum erklaeren der Cluster
-    for c in raw_data.columns:
-        print("---- %s ---" % c)
-        print(raw_data[c][raw_data['cluster']==0].value_counts())
-        print(raw_data[c][raw_data['cluster']==1].value_counts())
-        print(raw_data[c][raw_data['cluster']==2].value_counts())
+    # for c in raw_data.columns:
+    #     print("---- %s ---" % c)
+    #     print(raw_data[c][raw_data['cluster']==0].value_counts())
+    #     print(raw_data[c][raw_data['cluster']==1].value_counts())
+    #     print(raw_data[c][raw_data['cluster']==2].value_counts())
 
     # Cluster 0: Kinderlose großverdiener, Genießer, steigert nicht das wohlbefinden, würden nicht mehr zahlen, bevorzugen
     # kein bio vor konventioenneln, kaufen eher kein bio, nicht wichtig (Öko essen), Ehepartner ausflug

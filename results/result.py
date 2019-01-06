@@ -35,14 +35,11 @@ def do(filename):
 
     # 3. Assignment
     print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 3. Assignment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
-    # TODO hier noch ein plot erstellen, der pro frage den Mittelwert darstellt und ggf. irgendwie noch die std
     bio_elements = ['f15_1', 'f15_2', 'f15_3', 'f15_4', 'f15_5', 'f15_6', 'f15_7', 'f15_8', 'f15_9', 'f15_10', 'f15_11', 'f15_12', 'f15_13', 'f15_14', 'f15_15', 'f15_16']
     print(data[bio_elements][(data[bio_elements] < 8) & (data[bio_elements] > 0)].describe())
 
     # 4. Assignment
     print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 4. Assignment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
-    # TODO  0 reinnehmen und -99 raus. evtl. noch weiteres prep; hier noch ein plot erstellen, der pro frage den Mittelwert darstellt und
-    #  ggf. irgendwie noch die std
     print('Leute, die bereit sind für Bio mehr zu zahlen, würden im Schnitt x mehr zahlen:')
     print(data['f17'][(data['f17'] > 0)].describe())
     print('Leute, die die Frage beantwortet haben:')
@@ -51,12 +48,11 @@ def do(filename):
     print(prep_f17.describe())
 
     # 5. Assignment --> cluster analysis
+    print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 5. Assignment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
     cluster_result.calculate_cluster()
 
     # 6. Assignment
     print('xxxxxxxxxxxxxxxxxxxxxxxxxxx - 6. Assignment - xxxxxxxxxxxxxxxxxxxxxxxxxxx')
-    # TODO prüfen, ob die 0er und 8er rausgennommen werden sollen; hier noch ein plot erstellen, der pro Frage den
-    #  Mittelwert darstellt und ggf. irgendwie noch die std; hier noch eine Korreltation oder Regression
     bio_food = ['f16_1', 'f16_2', 'f16_3', 'f16_4', 'f16_5', 'f16_6', 'f16_7', 'f16_8', 'f16_9']
     print(data[bio_food][(data[bio_food] < 8) & (data[bio_food] > 0)].describe())
 
