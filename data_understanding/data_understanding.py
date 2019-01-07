@@ -80,7 +80,7 @@ fig = {
                 },
                 "showarrow": False,
                 "text": "Geschlecht",
-                "x": 0.27,
+                "x": 0.23,
                 "y": 0.5
             },
             {
